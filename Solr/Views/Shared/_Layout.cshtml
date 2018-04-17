@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/content/Site.css")" rel="stylesheet" />
+    @RenderSection("styles", false)
+</head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="bg-info sombra" style="width: 100%">
+                    <h1 class="cabecalho">SOLR</h1>
+                </div>
+                <hr />
+            </div>
+            <div class="row body-content">
+                @RenderBody()
+                <hr />
+            </div>
+        </div>
+        <script src="@Url.Content("~/scripts/jquery-3.0.0.js")"></script>
+        <script src="@Url.Content("~/scripts/bootstrap.js")"></script>
+        @RenderSection("ScriptPage", false)
+    </body>
+</html>
