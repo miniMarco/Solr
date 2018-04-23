@@ -25,9 +25,9 @@ namespace Solr
             Startup.Init<Artigo>("http://localhost:8983/solr/core");
 
             /*** Comentar as linhas para não subir mais artigos para o solr ******/
-            //List<Artigo> artigos = processarArquivo();
-            //recuperarSumarios(artigos);
-            //subirArtigosNoSolr(artigos);
+            List<Artigo> artigos = processarArquivo();
+            recuperarSumarios(artigos);
+            subirArtigosNoSolr(artigos);
         }
 
         private List<Artigo> processarArquivo()
@@ -70,22 +70,33 @@ namespace Solr
 
         private void recuperarSumarios(List<Artigo> artigos)
         {
+            
             try
             {
                 StreamReader arquivoOriginal = new StreamReader("c:/Arquivo/normal.txt", Encoding.Default);
-                string linha, texto = string.Empty;
 
+                bool preencherTexto = false;
+                string linha, texto = string.Empty;
+                string nome = string.Empty;
+                
                 while ((linha = arquivoOriginal.ReadLine()) != null)
                 {
                     if (linha.Contains("[Original de:"))
                     {
-                        preencherSumarioDeArtigo(formatarNomeArtigo(linha), texto, artigos);
+                        preencherTexto = true;
+                        preencherSumarioDeArtigo(nome, texto, artigos);
+
+                        nome = formatarNomeArtigo(linha);
                         texto = string.Empty;
                         continue;
                     }
+
                     if (string.IsNullOrEmpty(linha))
                         continue;
-                    texto += linha + " ";
+
+                    if(preencherTexto)
+                        texto += linha + " ";
+
                 }
                 arquivoOriginal.Close();
             }
@@ -95,12 +106,12 @@ namespace Solr
             }
         }
 
-        private void preencherSumarioDeArtigo(string nomeSumario, string texto, List<Artigo> artigos)
+        private void preencherSumarioDeArtigo(string nome, string texto, List<Artigo> artigos)
         {
-            if (string.IsNullOrEmpty(texto))
+            if (string.IsNullOrEmpty(texto) || string.IsNullOrEmpty(nome))
                 return;
 
-            Artigo artigo = artigos.Where(item => item.NomeSumario == nomeSumario).First();
+            Artigo artigo = artigos.Where(item => item.NomeSumario == nome).First();
             artigo.Sumario.Add(texto);
         }
 

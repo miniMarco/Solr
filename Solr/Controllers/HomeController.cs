@@ -30,8 +30,8 @@ namespace Solr.Controllers
             ArtigoView artigosView = new ArtigoView();
 
             // trás somente o campo "cluster"
-            artigosView.Artigos = solr.Query(SolrQuery.All, new QueryOptions { Fields = new[] { "cluster" } });
-            //artigosView.Artigos = solr.Query(SolrQuery.All);
+            //artigosView.Artigos = solr.Query(SolrQuery.All, new QueryOptions { Fields = new[] { "cluster" } });
+            artigosView.Artigos = solr.Query(SolrQuery.All);
            formatarResumo(artigosView.Artigos);
 
             return View(artigosView);
@@ -49,7 +49,7 @@ namespace Solr.Controllers
             }
             else
             {
-                artigos = solr.Query(montarQuery(busca), new QueryOptions { Highlight = new HighlightingParameters { Fields = new[] { "*"} } });
+                artigos = solr.Query(montarQuery(busca));//, new QueryOptions { Highlight = new HighlightingParameters { Fields = new[] { "*"} } });
             }
             artigosView.Artigos = artigos;
             formatarResumo(artigosView.Artigos);
