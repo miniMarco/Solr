@@ -36,6 +36,20 @@ textarea {
 }
 
 .borda {
-    border: 2px solid green;
-    border-radius: 15px;
+    border: 1px solid lightgrey;
+    padding: 15px;
+    
+}
+
+.fundo {
+    background-color: white;
+    box-shadow: rgba(0,0,0,0.4) 5px 5px;
+}
+
+.bordaCluster 
+{
+    
+    margin:2px;
+    padding: 2px;
+    width:100%;
 }

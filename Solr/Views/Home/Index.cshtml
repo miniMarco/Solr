@@ -7,47 +7,63 @@
 
 
 <div class="col-md-2">
-    <div style="height:80px; padding-top:50px;"> Categorias </div>
-    @foreach (KeyValuePair<string,int> item in Model.ItemQuantidade)
-    {
-        <div style="border-top: 1px solid lightgrey; padding:2px;">
-            @Html.ActionLink(item.Key + " (" + item.Value + ")", "PesquisarPorCluster" , new { key = item.Key }) 
-        </div>
-    }
+    <div style="height:80px; padding-top:1px;">
+        @Html.ActionLink("Início", "Index",null, new { @class = "btn btn-default bordaCluster" })
+    </div>
+    <div  style="margin-top:15px;">
+        @foreach (KeyValuePair<string, int> item in Model.ItemQuantidade)
+        {
+            <div>
+                @Html.ActionLink(item.Key + " (" + item.Value + ")", "PesquisarPorCluster", new { key = item.Key }, new {@class = "btn btn-default bordaCluster" })
+            </div>
+        }
+    </div>
 </div>
 
 
 
 <div class="col-md-10">
+
     @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        <div class="form-inline border">
+        <div class="form-inline borda  fundo" style="text-align:right;">
             @Html.TextBox("busca", null, new { @class = "form-control" })
             <input type="submit" value="Pesquisar" class="btn btn-sm btn-primary" />
 
         </div>
 
     }
-    <table id="tabela" class="table table-striped">
-        <thead>
-            <tr>
-                <!--<th> @Html.DisplayNameFor(model => model.Artigos[0].NomeSumario) </th> -->
-                <th> @Html.DisplayNameFor(model => model.Artigos[0].Sumario) </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Artigos)
-            {
-            <tr>
-                <!--<td>@Html.DisplayFor(modelItem => item.NomeSumario)</td>-->
-                <td>@Html.DisplayFor(modelItem => item.SumarioLimitado)</td>
-            </tr>
-                }
-            </tbody>
-        </table>
+    <div class="fundo borda" style="margin-top:30px; min-height:400px;">
+        @if (Model.Artigos.Count == 0 || Model.Artigos[0].Sumario.Count == 0 || 
+            string.IsNullOrEmpty(Model.Artigos[0].Sumario[0]))
+        {
+            <p>A pesquisa não encontrou resultados.</p>
+        }
+        else
+        {
+            <table id="tabela" class="table table-striped">
+                <thead>
+                    <tr>
+                        <!--<th> @Html.DisplayNameFor(model => model.Artigos[0].NomeSumario) </th> -->
+                        <th> @Html.DisplayNameFor(model => model.Artigos[0].Sumario) </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Artigos)
+                    {
+                        <tr>
+                            <!--<td>@Html.DisplayFor(modelItem => item.NomeSumario)</td>-->
+                            <td>
+                                <div>@Html.DisplayFor(modelItem => item.SumarioLimitado)</div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
-
+</div>
     @section styles
     {
         <link href="@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
