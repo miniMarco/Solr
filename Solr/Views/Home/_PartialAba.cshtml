@@ -1,0 +1,54 @@
+﻿@model Solr.Models.ArtigoView
+
+<div id="module" class="fundo borda" style="margin-top:30px; min-height:400px; width:100%;">
+    @if (Model == null)
+    {
+        <p></p>
+    }
+    else if (Model.Artigos == null || Model.Artigos.Count == 0 || Model.Artigos[0].Sumario.Count == 0 ||
+        string.IsNullOrEmpty(Model.Artigos[0].Sumario[0]))
+    {
+        <p>A pesquisa não encontrou resultados.</p>
+    }
+    else
+    {
+
+        var tabelaId = "tabela" + (new Random()).Next(1, 1000);
+
+        <table id="tabela" class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="10%"> @Html.DisplayNameFor(model => model.Artigos[0].NomeSumario)</th>
+                    <th width="5%"></th>
+                    <th width="85%"> @Html.DisplayNameFor(model => model.Artigos[0].Sumario) </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Artigos)
+                {
+                    var nomeComSharp = "#" + item.NomeSumario.Split('.')[0];
+                    var nome = item.NomeSumario.Split('.')[0];
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.NomeSumario)  <br /> @Html.DisplayFor(modelItem => item.Cluster) </td>
+                        <td>
+                            <div class="collapsed aa bb" data-toggle="collapse" href=@nomeComSharp role="button" aria-expanded="false" aria-controls=@nome></div>
+                        </td>
+                        <td>
+                            <div class="collapse aa" id=@nome aria-expanded="false">
+                                <div class="card card-body">
+                                    <p style="text-align:justify;">
+                                        @if (item.Sumario.Count != 0)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.Sumario[0])
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+</div>

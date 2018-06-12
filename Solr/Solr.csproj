@@ -181,11 +181,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Cores.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Artigo2.cs" />
     <Compile Include="Models\Artigo.cs" />
+    <Compile Include="Models\ArtigoCore.cs" />
     <Compile Include="Models\ArtigoView.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Models\Operacoes.cs" />
@@ -2102,6 +2103,7 @@
     <Content Include="solr\server\tmp\start_5427081288789271795.properties" />
     <Content Include="solr\server\tmp\start_6690554364719910872.properties" />
     <Content Include="solr\server\tmp\upload_332a4978_4975_4690_b5a3_06bd5913f943_00000000.tmp" />
+    <Content Include="Views\Home\_PartialAba.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

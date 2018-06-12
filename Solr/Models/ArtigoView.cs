@@ -8,8 +8,8 @@ namespace Solr.Models
 {
     public class ArtigoView
     {
-        SolrQueryResults<Artigo> artigos;
-        public SolrQueryResults<Artigo> Artigos
+        SolrQueryResults<ArtigoCore> artigos;
+        public SolrQueryResults<ArtigoCore> Artigos
         {
             get { return artigos; }
             set
@@ -33,7 +33,7 @@ namespace Solr.Models
                 }
             }
         }
-        public Dictionary<string, int> ItemQuantidade { get; set; }
 
+        public Dictionary<string, int> ItemQuantidade { get; set; }
     }
 }

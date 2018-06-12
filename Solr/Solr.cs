@@ -27,7 +27,7 @@ namespace Solr
 
         public ISolrOperations<Artigo> CoreInstance
         {
-            get { return ServiceLocator.Current.GetInstance<ISolrOperations<Artigo>>("core"); }
+            get { return ServiceLocator.Current.GetInstance<ISolrOperations<Artigo>>(); }
         }
     }
 
@@ -50,7 +50,7 @@ namespace Solr
 
         public ISolrOperations<Artigo2> Core2Instance
         {
-            get { return ServiceLocator.Current.GetInstance<ISolrOperations<Artigo2>>("core2"); }
+            get { return ServiceLocator.Current.GetInstance<ISolrOperations<Artigo2>>(); }
         }
     }
 
@@ -71,9 +71,9 @@ namespace Solr
             return instance;
         }
 
-        public ISolrOperations<Artigo> Core3Instance
+        public ISolrOperations<Artigo3> Core3Instance
         {
-            get { return ServiceLocator.Current.GetInstance<ISolrOperations<Artigo>>("core3"); }
+            get { return ServiceLocator.Current.GetInstance<ISolrOperations<Artigo3>>(); }
         }
     }
 }

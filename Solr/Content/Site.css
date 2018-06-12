@@ -53,3 +53,22 @@ textarea {
     padding: 2px;
     width:100%;
 }
+
+
+#module .aa.collapse[aria-expanded="false"] {
+    display: block;
+    height: 80px !important;
+    overflow: hidden;
+}
+
+#module .aa.collapsing[aria-expanded="false"] {
+    height: 80px !important;
+}
+
+#module .bb.collapsed:after {
+    content: '[+]';
+}
+
+#module .bb:not(.collapsed):after {
+    content: '[-]';
+}

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Solr.Models
 {
-    public class Artigo2
+    public class ArtigoCore
     {
         [SolrField("cluster")]
         public string Cluster { get; set; }
@@ -17,12 +17,9 @@ namespace Solr.Models
         [SolrField("score")]
         public double? Score { get; set; }
 
-        public string SumarioLimitado { get; set; }
-
-        public Artigo2()
+        public ArtigoCore()
         {
             Sumario = new List<string>();
         }
-
     }
 }
