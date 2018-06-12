@@ -12,14 +12,14 @@ namespace Solr.Models
 
         public void deletarTodosOsDados()
         {
-            ISolrOperations<Artigo> solr = SingleSolr.GetInstance().InstanciaDoSolar;
+            ISolrOperations<Artigo> solr = SingleSolr.GetInstance().CoreInstance;
             solr.Delete(SolrQuery.All);
             solr.Commit();
         }
 
         internal void adicionarArtigo(List<Artigo> artigos)
         {
-            ISolrOperations<Artigo> solr = SingleSolr.GetInstance().InstanciaDoSolar;
+            ISolrOperations<Artigo> solr = SingleSolr.GetInstance().CoreInstance;
             solr.AddRange(artigos);
             solr.Commit();
         }

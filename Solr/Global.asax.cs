@@ -23,11 +23,13 @@ namespace Solr
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Startup.Init<Artigo>("http://localhost:8983/solr/core");
+            Startup.Init<Artigo>("http://localhost:8983/solr/core2");
+            Startup.Init<Artigo>("http://localhost:8983/solr/core3");
 
             /*** Comentar as linhas para não subir mais artigos para o solr ******/
-            List<Artigo> artigos = processarArquivo();
-            recuperarSumarios(artigos);
-            subirArtigosNoSolr(artigos);
+            //List<Artigo> artigos = processarArquivo();
+            //recuperarSumarios(artigos);
+            //subirArtigosNoSolr(artigos);
         }
 
         private List<Artigo> processarArquivo()

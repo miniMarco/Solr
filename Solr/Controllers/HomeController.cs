@@ -3,56 +3,63 @@ using SolrNet;
 using SolrNet.Commands.Parameters;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Web.Mvc;
 
 namespace Solr.Controllers
 {
     public class HomeController : Controller
     {
-        public ISolrOperations<Artigo> solr
+        LogSimples log = new LogSimples();
+        public ISolrOperations<Artigo> solrCore
         {
-            get { return SingleSolr.GetInstance().InstanciaDoSolar; }
+            get { return SingleSolr.GetInstance().CoreInstance; }
         }
 
-        private void formatarResumo(List<Artigo> artigos)
+        public ISolrOperations<Artigo2> solrCore2
         {
-            foreach (Artigo artigo in artigos)
-            {
-                if (artigo.Sumario == null || artigo.Sumario.Count == 0 || string.IsNullOrEmpty(artigo.Sumario[0]))
-                    continue;
-
-                artigo.SumarioLimitado = artigo.Sumario[0].Substring(0, 500) + "...";
-            }
+            get { return SingleSolr2.GetInstance().Core2Instance; }
         }
 
         public ActionResult Index()
         {
             ArtigoView artigosView = new ArtigoView();
-
-            // trás somente o campo "cluster"
-            //artigosView.Artigos = solr.Query(SolrQuery.All, new QueryOptions { Fields = new[] { "cluster" } });
-            artigosView.Artigos = solr.Query(SolrQuery.All);
-           formatarResumo(artigosView.Artigos);
-
             return View(artigosView);
         }
 
         [HttpPost]
         public ActionResult Pesquisar(string busca)
         {
-            List<Artigo> artigos;
+            SolrQueryResults<Artigo> artigos;
             ArtigoView artigosView = new ArtigoView();
 
             if (string.IsNullOrEmpty(busca))
             {
-                artigos = new List<Artigo>();
+                artigos = new SolrQueryResults<Artigo>();
             }
             else
             {
-                artigos = solr.Query(montarQuery(busca));//, new QueryOptions { Highlight = new HighlightingParameters { Fields = new[] { "*"} } });
+                Stopwatch medidor = new Stopwatch();
+                medidor.Start();
+                artigos = solrCore.Query(montarQuery(busca));
+                medidor.Stop();
+
+                log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
             }
             artigosView.Artigos = artigos;
-            formatarResumo(artigosView.Artigos);
+            return View("Index", artigosView);
+        }
+
+        [HttpPost]
+        public ActionResult Listar(string busca)
+        {
+            ArtigoView artigosView = new ArtigoView();
+
+            Stopwatch medidor = new Stopwatch();
+            medidor.Start();
+            artigosView.Artigos = solrCore.Query(SolrQuery.All);
+            medidor.Stop();
+            log.escreverLog("Pesquisando todos os artigos: " + medidor.Elapsed.ToString());
             return View("Index", artigosView);
         }
 
@@ -64,14 +71,18 @@ namespace Solr.Controllers
             {
                 lista.Add(new SolrQueryByField("sumario", termo));
             }
-            return new SolrMultipleCriteriaQuery(lista, "AND");
+            return new SolrMultipleCriteriaQuery(lista);
         }
 
         public ActionResult PesquisarPorCluster(string key)
         {
             ArtigoView artigosView = new ArtigoView();
-            artigosView.Artigos = solr.Query(new SolrQuery("cluster:" + key));
-            formatarResumo(artigosView.Artigos);
+            Stopwatch medidor = new Stopwatch();
+            medidor.Start();
+            artigosView.Artigos = solrCore.Query(new SolrQuery("cluster:" + key));
+            medidor.Stop();
+            log.escreverLog("Pesquisa por cluster: " + medidor.Elapsed.ToString());
+
             return View("Index", artigosView);
         }
     }

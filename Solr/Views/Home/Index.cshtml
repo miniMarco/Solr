@@ -8,34 +8,42 @@
 
 <div class="col-md-2">
     <div style="height:80px; padding-top:1px;">
-        @Html.ActionLink("Início", "Index",null, new { @class = "btn btn-default bordaCluster" })
+        @Html.ActionLink("Limpar pesquisa", "Index",null, new { @class = "btn btn-default bordaCluster" })
     </div>
     <div  style="margin-top:15px;">
-        @foreach (KeyValuePair<string, int> item in Model.ItemQuantidade)
-        {
-            <div>
-                @Html.ActionLink(item.Key + " (" + item.Value + ")", "PesquisarPorCluster", new { key = item.Key }, new {@class = "btn btn-default bordaCluster" })
-            </div>
+        @if(Model.ItemQuantidade != null)
+        { 
+            foreach (KeyValuePair<string, int> item in Model.ItemQuantidade)
+            {
+                <div>
+                    @Html.ActionLink(item.Key + " (" + item.Value + ")", "PesquisarPorCluster", new { key = item.Key }, new {@class = "btn btn-default bordaCluster" })
+                </div>
+            }
         }
     </div>
 </div>
 
-
-
 <div class="col-md-10">
-
-    @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-inline borda  fundo" style="text-align:right;">
+    <div class="form-inline borda fundo" style="text-align:right; display:block; ">
+        @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block"}))
+        {
+            @Html.AntiForgeryToken()
             @Html.TextBox("busca", null, new { @class = "form-control" })
             <input type="submit" value="Pesquisar" class="btn btn-sm btn-primary" />
-
-        </div>
-
-    }
-    <div class="fundo borda" style="margin-top:30px; min-height:400px;">
-        @if (Model.Artigos.Count == 0 || Model.Artigos[0].Sumario.Count == 0 || 
+        }
+        @using (Html.BeginForm("Listar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("busca", null, new { @class = "form-control" })
+            <input type="submit" value="Listar todos os artigos" class="btn btn-sm btn-primary" />
+        }
+    </div>
+    <div id="module" class="fundo borda" style="margin-top:30px; min-height:400px; width:100%;">
+        @if (Model.Artigos == null)
+        { 
+            <p></p> 
+        }
+        else if (Model.Artigos.Count == 0 || Model.Artigos[0].Sumario.Count == 0 ||
             string.IsNullOrEmpty(Model.Artigos[0].Sumario[0]))
         {
             <p>A pesquisa não encontrou resultados.</p>
@@ -45,45 +53,79 @@
             <table id="tabela" class="table table-striped">
                 <thead>
                     <tr>
-                        <th> @Html.DisplayNameFor(model => model.Artigos[0].NomeSumario) </th> 
-                        <th> @Html.DisplayNameFor(model => model.Artigos[0].Sumario) </th>
+                        <th width="10%"> @Html.DisplayNameFor(model => model.Artigos[0].NomeSumario)</th>
+                        <th width="5%"></th>
+                        <th width="85%"> @Html.DisplayNameFor(model => model.Artigos[0].Sumario) </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.Artigos)
                     {
+                        var nomeComSharp = "#" + item.NomeSumario.Split('.')[0];
+                        var nome = item.NomeSumario.Split('.')[0];
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.NomeSumario)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NomeSumario)  <br /> @Html.DisplayFor(modelItem => item.Cluster) </td>
                             <td>
-                                <div>@Html.DisplayFor(modelItem => item.SumarioLimitado)</div>
+                                <div class="collapsed aa bb" data-toggle="collapse" href=@nomeComSharp role="button" aria-expanded="false" aria-controls=@nome>[+]</div>
+                            </td>
+                            <td>
+                                <div class="collapse aa" id=@nome aria-expanded="false">
+                                    <div class="card card-body">
+                                        <p style="text-align:justify;">
+                                        @if (item.Sumario.Count != 0)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.Sumario[0])
+                                        }
+                                        </p>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }
+                    
                 </tbody>
             </table>
         }
     </div>
 </div>
-    @section styles
-    {
-        <link href="@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
-    }
+<div id="myModal" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            Carregando...
+        </div>
+    </div>
+</div>
+@section styles
+{
+    <link href="@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
+}
 
-    @section ScriptPage
-    {
-        <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
-        <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () { $('.table').dataTable(); });
-        </script>
-        <script>
-            $('#tabela').dataTable({
-                "searching": false,
-                "lengthChange": false
-            });
+@section ScriptPage
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { $('.table').dataTable(); });
+    </script>
+    <script>
+        $('#tabela').dataTable({
+            "searching": false,
+            "lengthChange": false
+        });
 
 
-            var table = $('#tabela').DataTable();
-            table.page.len(5).draw();
-        </script>
-    }
+        var table = $('#tabela').DataTable();
+        table.page.len(5).draw();
+    </script>
+    <script type="text/javascript">
+        function exibirModal()
+        {
+            $('#myModal').modal('show');
+        }
+
+        function removerModal()
+        {
+            $('#myModal').modal('hide');
+        }
+    </script>
+}

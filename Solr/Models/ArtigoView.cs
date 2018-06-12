@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolrNet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,8 +8,8 @@ namespace Solr.Models
 {
     public class ArtigoView
     {
-        List<Artigo> artigos;
-        public List<Artigo> Artigos
+        SolrQueryResults<Artigo> artigos;
+        public SolrQueryResults<Artigo> Artigos
         {
             get { return artigos; }
             set
