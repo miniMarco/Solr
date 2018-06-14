@@ -3,101 +3,154 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
-<div class="col-md-2">
-    <div style="height:80px; padding-top:1px;">
-        @Html.ActionLink("Limpar pesquisa", "Index", null, new { @class = "btn btn-default bordaCluster" })
-    </div>
-    <div  style="margin-top:15px;">
-        @if (Model.ItemQuantidade != null)
+<div class="row borda fundo" style="display:block; margin-left:15px; margin-right:15px;">
+    <div class="col-md-2">
+        @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
         {
-            foreach (KeyValuePair<string, int> item in Model.ItemQuantidade)
+
+            @Html.AntiForgeryToken()
+            <div style="margin:5px;">@Html.TextBox("busca", null, new { @class = "form-control" })</div>
+            <div style="margin:5px;">@Html.DropDownList("CoreId")</div>
+            <div style="margin:5px;"><input type="submit" value="Pesquisar" class="btn btn-sm btn-primary" /></div>
+        }
+    </div>
+    <div class="col-md-2">
+        <p>Precision: </p>
+        @if (Model.ArtigosRelevantes != null)
+        {
+            foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
             {
-                <div>
-                    @Html.ActionLink(item.Key + " (" + item.Value + ")", "PesquisarPorCluster", new { key = item.Key }, new { @class = "btn btn-default bordaCluster" })
-                </div>
+                double result = (double)item.Value / (double)Model.Artigos.Count;
+                <p style="padding:0px; margin:0px;">@item.Key: @item.Value/@Model.Artigos.Count = @result.ToString("0.000")</p>
+            }
+        }
+
+    </div>
+
+    <div class="col-md-2">
+        <p>Recall: </p>
+        @if (Model.ArtigosRelevantes != null)
+        {
+            foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
+            {
+                double result = (double)item.Value / (double)10;
+                <p style="padding:0px; margin:0px;">@item.Key: @item.Value/10 = @result.ToString("0.000")</p>
+            }
+        }
+
+    </div>
+    <div class="col-md-2">
+        <p>Medida-F: 2*((p*r)/(p+r)) </p>
+        @if (Model.ArtigosRelevantes != null)
+        {
+            foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
+            {
+                double p = (double)item.Value / (double)Model.Artigos.Count;
+
+                double r = (double)item.Value / (double)10;
+                double mf = 2 * ((p * r) / (p + r));
+                <p style="padding:0px; margin:0px;">@item.Key: @mf.ToString("0.000")</p>
             }
         }
     </div>
-</div>
-
-<div class="col-md-10">
-    <div class="form-inline borda fundo" style="text-align:right; display:block; ">
-
-        @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
-        {
-            @Html.AntiForgeryToken()
-            @Html.DropDownList("CoreId")
-            @Html.TextBox("busca", null, new { @class = "form-control" })
-            <input type="submit" value="Pesquisar" class="btn btn-sm btn-primary" />
-        }
-        @using (Html.BeginForm("Listar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
-        {
-            @Html.DropDownList("CoreId")
-            @Html.AntiForgeryToken()
-            @Html.Hidden("busca", null, new { @class = "form-control" })
-            <input type="submit" value="Listar todos os artigos" class="btn btn-sm btn-primary" />
-        }
-    </div>
-    <div style="margin-top:30px;">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link" id="core1-tab" data-toggle="tab" href="#core1" role="tab" aria-controls="core1" aria-selected="false">Core1</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="core2-tab" data-toggle="tab" href="#core2" role="tab" aria-controls="core2" aria-selected="false">Core2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="core3-tab" data-toggle="tab" href="#core3" role="tab" aria-controls="core3" aria-selected="false">Core3</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade active" id="core1" role="tabpanel" aria-labelledby="core1-tab"> 
-                @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
-            </div>
-            <div class="tab-pane fade" id="core2" role="tabpanel" aria-labelledby="core2-tab">
-                @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
-            </div>
-            <div class="tab-pane fade" id="core3" role="tabpanel" aria-labelledby="core3-tab">
-                @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
-            </div>
-        </div>
+    <div class="col-md-4">
+        <p>Tempo da pesquisa: @Model.QueryTime.ToString()</p>
     </div>
 </div>
+<div class="borda fundo" style="display:block; margin-left:15px; margin-right:15px; margin-top:15px;">
+    @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
+</div>
 
-@section styles
+    @*<div class="col-md-2">
+            <div style="height:80px; padding-top:1px;">
+                @Html.ActionLink("Limpar pesquisa", "Index", null, new { @class = "btn btn-default bordaCluster" })
+            </div>
+            <div style="margin-top:15px;">
+                @if (Model.ItemQuantidade != null)
+                {
+                    foreach (KeyValuePair<string, int> item in Model.ItemQuantidade)
+                    {
+                        <div>
+                            @Html.ActionLink(item.Key + " (" + item.Value + ")", "PesquisarPorCluster", new { key = item.Key }, new { @class = "btn btn-default bordaCluster" })
+                        </div>
+                    }
+                }
+            </div>
+        </div>*@
+    @*
+        <div class="col-md-10">
+            <div class="form-inline borda fundo" style="text-align:right; display:block; ">
+
+                @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.DropDownList("CoreId")
+                    @Html.TextBox("busca", null, new { @class = "form-control" })
+                    <input type="submit" value="Pesquisar" class="btn btn-sm btn-primary" />
+                }
+                @using (Html.BeginForm("Listar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
+                {
+                    @Html.DropDownList("CoreId")
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("busca", null, new { @class = "form-control" })
+                    <input type="submit" value="Listar todos os artigos" class="btn btn-sm btn-primary" />
+                }
+            </div>
+            <div style="margin-top:30px;">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" id="core1-tab" data-toggle="tab" href="#core1" role="tab" aria-controls="core1" aria-selected="false">Core1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="core2-tab" data-toggle="tab" href="#core2" role="tab" aria-controls="core2" aria-selected="false">Core2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="core3-tab" data-toggle="tab" href="#core3" role="tab" aria-controls="core3" aria-selected="false">Core3</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active" id="core1" role="tabpanel" aria-labelledby="core1-tab">
+                        @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
+                    </div>
+                    <div class="tab-pane fade" id="core2" role="tabpanel" aria-labelledby="core2-tab">
+                        @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
+                    </div>
+                    <div class="tab-pane fade" id="core3" role="tabpanel" aria-labelledby="core3-tab">
+                        @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    @section styles
 {
-    <link href="@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
-}
+        <link href="@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />
+    }
 
-@section ScriptPage
+    @section ScriptPage
 {
-    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
-    <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () { $('.table').dataTable(); });
-    </script>
-    <script>
-        $('#tabela').dataTable({
-            "searching": false,
-            "lengthChange": false
-        });
+        <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+        <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () { $('.table').dataTable(); });
+        </script>
+        <script>
+            $('#tabela').dataTable({
+                "searching": false,
+                "lengthChange": false
+            });
 
 
-        var table = $('#tabela').DataTable();
-        table.page.len(5).draw();
-    </script>
-    <script type="text/javascript">
-        function exibirModal()
-        {
-            $('#myModal').modal('show');
-        }
+            var table = $('#tabela').DataTable();
+            table.page.len(5).draw();
+        </script>
+        <script type="text/javascript">
+            function exibirModal() {
+                $('#myModal').modal('show');
+            }
 
-        function removerModal()
-        {
-            $('#myModal').modal('hide');
-        }
-    </script>
-}
+            function removerModal() {
+                $('#myModal').modal('hide');
+            }
+        </script>
+    }

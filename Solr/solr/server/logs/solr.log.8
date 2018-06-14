@@ -1,721 +1,95 @@
-2018-04-16 11:47:44.310 INFO  (main) [   ] o.e.j.s.Server jetty-9.3.20.v20170531
-2018-04-16 11:47:45.419 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 7.2.1
-2018-04-16 11:47:45.419 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
-2018-04-16 11:47:45.419 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: C:\Users\Marco\source\repos\Solr\Solr\solr
-2018-04-16 11:47:45.497 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2018-04-16T11:47:45.419Z
-2018-04-16 11:47:45.513 INFO  (main) [   ] o.a.s.u.StartupLoggingUtils Property solr.log.muteconsole given. Muting ConsoleAppender named CONSOLE
-2018-04-16 11:47:45.638 INFO  (main) [   ] o.a.s.c.SolrResourceLoader Using system property solr.solr.home: C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr
-2018-04-16 11:47:45.685 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\solr.xml
-2018-04-16 11:47:47.435 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr
-2018-04-16 11:47:47.450 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Cores are: [core]
-2018-04-16 11:47:47.466 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient cache for 2147483647 transient cores
-2018-04-16 11:47:48.076 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrResourceLoader [core] Added 53 libs to classloader, from paths: [/C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/clustering/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/extraction/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/langid/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/velocity/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/dist]
-2018-04-16 11:47:49.451 INFO  (main) [   ] o.e.j.s.Server Started @10410ms
-2018-04-16 11:47:50.873 INFO  (qtp18154549-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=258
-2018-04-16 11:47:52.091 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrConfig Using Lucene MatchVersion: 7.2.1
-2018-04-16 11:47:52.294 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.IndexSchema [core] Schema name=default-config
-2018-04-16 11:47:53.076 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2018-04-16 11:47:53.091 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.CoreContainer Creating SolrCore 'core' using configuration from instancedir C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core, trusted=true
-2018-04-16 11:47:53.154 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrCore solr.RecoveryStrategy.Builder
-2018-04-16 11:47:53.216 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrCore [[core] ] Opening new SolrCore at [C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core], dataDir=[C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core\data\]
-2018-04-16 11:47:53.263 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
-2018-04-16 11:47:53.896 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
-2018-04-16 11:47:53.896 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
-2018-04-16 11:47:54.474 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
-2018-04-16 11:47:54.474 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.CommitTracker Soft AutoCommit: disabled
-2018-04-16 11:47:55.224 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.SolrIndexSearcher Opening [Searcher@40b4e8[core] main]
-2018-04-16 11:47:55.287 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core\conf
-2018-04-16 11:47:55.349 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
-2018-04-16 11:47:55.349 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
-2018-04-16 11:47:55.380 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
-2018-04-16 11:47:55.599 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@40b4e8[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
-2018-04-16 11:47:55.599 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2018-04-16 11:47:55.599 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
-2018-04-16 11:47:55.599 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.c.SolrCore [core] Registered new searcher Searcher@40b4e8[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
-2018-04-16 11:48:31.833 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=108
-2018-04-16 11:53:18.531 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 12:27:24.793 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 12:28:05.449 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=3
-2018-04-16 12:31:16.152 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 12:32:00.753 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
-2018-04-16 12:34:11.417 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 12:34:40.755 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 12:36:02.610 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 12:42:57.124 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=5
-2018-04-16 13:16:23.319 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=8
-2018-04-16 13:18:14.738 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:18:27.503 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:hkj&rows=100000000&version=2.2&wt=xml} hits=0 status=0 QTime=26
-2018-04-16 13:22:13.617 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:22:18.835 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:asd&rows=100000000&version=2.2&wt=xml} hits=0 status=0 QTime=1
-2018-04-16 13:23:33.179 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:23:45.242 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:asd&rows=100000000&version=2.2&wt=xml} hits=0 status=0 QTime=0
-2018-04-16 13:26:24.768 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:26:29.305 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:asd&rows=100000000&version=2.2&wt=xml} hits=0 status=0 QTime=0
-2018-04-16 13:26:36.043 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:ffdfd&rows=100000000&version=2.2&wt=xml} hits=0 status=0 QTime=1
-2018-04-16 13:26:54.348 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:31:42.075 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
-2018-04-16 13:33:59.626 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:34:07.452 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=2
-2018-04-16 13:34:23.122 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:35:17.995 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:35:31.481 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:35:42.307 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:36:07.803 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 13:36:23.528 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:17:29.259 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=3
-2018-04-16 14:18:28.954 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
-2018-04-16 14:19:06.633 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:29:36.105 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:32:47.408 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:33:38.676 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:34:19.945 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:35:34.440 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:36:18.125 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 14:36:29.409 ERROR (qtp18154549-18) [   x:core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:218)
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:269)
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:177)
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
-	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:710)
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:516)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:382)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:326)
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1751)
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.server.Server.handle(Server.java:534)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:283)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:108)
-	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:258)
-	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:49)
-	at org.apache.solr.search.QParser.getQuery(QParser.java:169)
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:160)
-	... 34 more
-Caused by: org.apache.solr.parser.ParseException: Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.QueryParser.generateParseException(QueryParser.java:885)
-	at org.apache.solr.parser.QueryParser.jj_consume_token(QueryParser.java:767)
-	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:325)
-	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:162)
-	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:131)
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:254)
-	... 37 more
-
-2018-04-16 14:36:29.412 INFO  (qtp18154549-18) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:&rows=100000000&version=2.2&wt=xml} status=400 QTime=14
-2018-04-16 14:37:07.846 ERROR (qtp18154549-16) [   x:core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:218)
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:269)
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:177)
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
-	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:710)
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:516)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:382)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:326)
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1751)
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.server.Server.handle(Server.java:534)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:283)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:108)
-	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:258)
-	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:49)
-	at org.apache.solr.search.QParser.getQuery(QParser.java:169)
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:160)
-	... 34 more
-Caused by: org.apache.solr.parser.ParseException: Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.QueryParser.generateParseException(QueryParser.java:885)
-	at org.apache.solr.parser.QueryParser.jj_consume_token(QueryParser.java:767)
-	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:325)
-	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:162)
-	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:131)
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:254)
-	... 37 more
-
-2018-04-16 14:37:07.848 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:&rows=100000000&version=2.2&wt=xml} status=400 QTime=2
-2018-04-16 16:07:08.996 ERROR (qtp18154549-19) [   x:core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:218)
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:269)
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:177)
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
-	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:710)
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:516)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:382)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:326)
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1751)
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.server.Server.handle(Server.java:534)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:283)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:108)
-	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:258)
-	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:49)
-	at org.apache.solr.search.QParser.getQuery(QParser.java:169)
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:160)
-	... 34 more
-Caused by: org.apache.solr.parser.ParseException: Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.QueryParser.generateParseException(QueryParser.java:885)
-	at org.apache.solr.parser.QueryParser.jj_consume_token(QueryParser.java:767)
-	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:325)
-	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:162)
-	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:131)
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:254)
-	... 37 more
-
-2018-04-16 16:07:08.998 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:&rows=100000000&version=2.2&wt=xml} status=400 QTime=3
-2018-04-16 16:09:16.436 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:10:23.064 ERROR (qtp18154549-17) [   x:core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:218)
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:269)
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:177)
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
-	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:710)
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:516)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:382)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:326)
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1751)
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.server.Server.handle(Server.java:534)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:283)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:108)
-	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:258)
-	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:49)
-	at org.apache.solr.search.QParser.getQuery(QParser.java:169)
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:160)
-	... 34 more
-Caused by: org.apache.solr.parser.ParseException: Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.QueryParser.generateParseException(QueryParser.java:885)
-	at org.apache.solr.parser.QueryParser.jj_consume_token(QueryParser.java:767)
-	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:325)
-	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:162)
-	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:131)
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:254)
-	... 37 more
-
-2018-04-16 16:10:23.065 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:&rows=100000000&version=2.2&wt=xml} status=400 QTime=2
-2018-04-16 16:12:07.928 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:35:23.939 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:36:41.681 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:37:06.457 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:37:46.597 INFO  (qtp18154549-18) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:39:06.459 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:42:12.720 ERROR (qtp18154549-18) [   x:core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:218)
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:269)
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:177)
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
-	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:710)
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:516)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:382)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:326)
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1751)
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.server.Server.handle(Server.java:534)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:283)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:108)
-	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:258)
-	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:49)
-	at org.apache.solr.search.QParser.getQuery(QParser.java:169)
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:160)
-	... 34 more
-Caused by: org.apache.solr.parser.ParseException: Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.QueryParser.generateParseException(QueryParser.java:885)
-	at org.apache.solr.parser.QueryParser.jj_consume_token(QueryParser.java:767)
-	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:325)
-	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:162)
-	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:131)
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:254)
-	... 37 more
-
-2018-04-16 16:42:12.721 INFO  (qtp18154549-18) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:&rows=100000000&version=2.2&wt=xml} status=400 QTime=1
-2018-04-16 16:42:21.792 ERROR (qtp18154549-16) [   x:core] o.a.s.h.RequestHandlerBase org.apache.solr.common.SolrException: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:218)
-	at org.apache.solr.handler.component.SearchHandler.handleRequestBody(SearchHandler.java:269)
-	at org.apache.solr.handler.RequestHandlerBase.handleRequest(RequestHandlerBase.java:177)
-	at org.apache.solr.core.SolrCore.execute(SolrCore.java:2503)
-	at org.apache.solr.servlet.HttpSolrCall.execute(HttpSolrCall.java:710)
-	at org.apache.solr.servlet.HttpSolrCall.call(HttpSolrCall.java:516)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:382)
-	at org.apache.solr.servlet.SolrDispatchFilter.doFilter(SolrDispatchFilter.java:326)
-	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1751)
-	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:582)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
-	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
-	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:226)
-	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1180)
-	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:512)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
-	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1112)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:213)
-	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:119)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.rewrite.handler.RewriteHandler.handle(RewriteHandler.java:335)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:134)
-	at org.eclipse.jetty.server.Server.handle(Server.java:534)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:251)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:283)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:108)
-	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:93)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.executeProduceConsume(ExecuteProduceConsume.java:303)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:148)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:136)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:671)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:589)
-	at java.lang.Thread.run(Unknown Source)
-Caused by: org.apache.solr.search.SyntaxError: Cannot parse 'cluster:': Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:258)
-	at org.apache.solr.search.LuceneQParser.parse(LuceneQParser.java:49)
-	at org.apache.solr.search.QParser.getQuery(QParser.java:169)
-	at org.apache.solr.handler.component.QueryComponent.prepare(QueryComponent.java:160)
-	... 34 more
-Caused by: org.apache.solr.parser.ParseException: Encountered "<EOF>" at line 1, column 8.
-Was expecting one of:
-    <BAREOPER> ...
-    "(" ...
-    "*" ...
-    <QUOTED> ...
-    <TERM> ...
-    <PREFIXTERM> ...
-    <WILDTERM> ...
-    <REGEXPTERM> ...
-    "[" ...
-    "{" ...
-    <LPARAMS> ...
-    "filter(" ...
-    <NUMBER> ...
-    
-	at org.apache.solr.parser.QueryParser.generateParseException(QueryParser.java:885)
-	at org.apache.solr.parser.QueryParser.jj_consume_token(QueryParser.java:767)
-	at org.apache.solr.parser.QueryParser.Clause(QueryParser.java:325)
-	at org.apache.solr.parser.QueryParser.Query(QueryParser.java:162)
-	at org.apache.solr.parser.QueryParser.TopLevelQuery(QueryParser.java:131)
-	at org.apache.solr.parser.SolrQueryParserBase.parse(SolrQueryParserBase.java:254)
-	... 37 more
-
-2018-04-16 16:42:21.792 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:&rows=100000000&version=2.2&wt=xml} status=400 QTime=1
-2018-04-16 16:42:26.542 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:42:36.410 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster6&rows=100000000&version=2.2&wt=xml} hits=2 status=0 QTime=10
-2018-04-16 16:43:17.156 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:43:20.170 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
-2018-04-16 16:43:50.315 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:43:55.862 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
-2018-04-16 16:44:07.337 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
-2018-04-16 16:46:08.438 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
-2018-04-16 16:46:25.374 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
-2018-04-16 16:47:15.719 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=1
-2018-04-16 16:47:25.482 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
-2018-04-16 16:48:20.303 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 16:48:24.295 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster11&rows=100000000&version=2.2&wt=xml} hits=2 status=0 QTime=0
-2018-04-16 16:50:24.852 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster11&rows=100000000&version=2.2&wt=xml} hits=2 status=0 QTime=0
-2018-04-16 17:46:45.117 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=7
-2018-04-16 17:47:17.622 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:humano&rows=100000000&version=2.2&wt=xml} hits=10 status=0 QTime=4
-2018-04-16 18:20:42.024 INFO  (qtp18154549-13) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1523902841514} status=0 QTime=10
-2018-04-16 18:20:42.093 INFO  (qtp18154549-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1523902841515} status=0 QTime=79
-2018-04-16 18:20:42.158 INFO  (qtp18154549-19) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1523902841515} status=0 QTime=26
-2018-04-16 18:20:45.012 INFO  (qtp18154549-12) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1523902841514} status=0 QTime=0
-2018-04-16 18:20:45.029 INFO  (qtp18154549-15) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1523902841514} status=0 QTime=14
-2018-04-16 18:20:45.047 INFO  (qtp18154549-20) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1523902841515} status=0 QTime=35
-2018-04-16 18:20:45.064 INFO  (qtp18154549-34) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1523902841514} status=0 QTime=0
-2018-04-16 18:20:45.068 INFO  (qtp18154549-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1523902841514} status=0 QTime=1
-2018-04-16 18:20:45.094 INFO  (qtp18154549-32) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1523902841515} status=0 QTime=29
-2018-04-16 18:20:46.883 INFO  (qtp18154549-34) [   ] o.a.s.c.SolrResourceLoader [core] Added 53 libs to classloader, from paths: [/C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/clustering/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/extraction/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/langid/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/velocity/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/dist]
-2018-04-16 18:20:46.944 INFO  (qtp18154549-34) [   ] o.a.s.c.SolrConfig Using Lucene MatchVersion: 7.2.1
-2018-04-16 18:20:47.044 INFO  (qtp18154549-34) [   ] o.a.s.s.IndexSchema [core] Schema name=default-config
-2018-04-16 18:20:47.194 INFO  (qtp18154549-34) [   ] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
-2018-04-16 18:20:47.212 INFO  (qtp18154549-34) [   ] o.a.s.c.CoreContainer Reloading SolrCore 'core' using configuration from instancedir C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core
-2018-04-16 18:20:47.214 INFO  (qtp18154549-34) [   x:core] o.a.s.c.SolrCore [[core] ] Opening new SolrCore at [C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core], dataDir=[C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core\data\]
-2018-04-16 18:20:47.216 INFO  (qtp18154549-34) [   x:core] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
-2018-04-16 18:20:47.327 INFO  (qtp18154549-34) [   x:core] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
-2018-04-16 18:20:47.327 INFO  (qtp18154549-34) [   x:core] o.a.s.u.CommitTracker Soft AutoCommit: disabled
-2018-04-16 18:20:47.332 INFO  (qtp18154549-34) [   x:core] o.a.s.s.SolrIndexSearcher Opening [Searcher@89a424[core] main]
-2018-04-16 18:20:47.335 INFO  (qtp18154549-34) [   x:core] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core\conf
-2018-04-16 18:20:47.336 INFO  (qtp18154549-34) [   x:core] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
-2018-04-16 18:20:47.337 INFO  (qtp18154549-34) [   x:core] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
-2018-04-16 18:20:47.339 INFO  (qtp18154549-34) [   x:core] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
-2018-04-16 18:20:47.340 INFO  (searcherExecutor-12-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@89a424[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
-2018-04-16 18:20:47.341 INFO  (searcherExecutor-12-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2018-04-16 18:20:47.341 INFO  (searcherExecutor-12-thread-1-processing-x:core) [   x:core] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
-2018-04-16 18:20:47.342 INFO  (searcherExecutor-12-thread-1-processing-x:core) [   x:core] o.a.s.c.SolrCore [core] Registered new searcher Searcher@89a424[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
-2018-04-16 18:20:47.382 INFO  (qtp18154549-34) [   x:core] o.a.s.u.DefaultSolrCoreState New IndexWriter is ready to be used.
-2018-04-16 18:20:47.456 INFO  (qtp18154549-34) [   x:core] o.a.s.s.SolrIndexSearcher Opening [Searcher@ff854b[core] main]
-2018-04-16 18:20:47.456 INFO  (qtp18154549-34) [   x:core] o.a.s.c.SolrCore [core]  CLOSING SolrCore org.apache.solr.core.SolrCore@f87bd1
-2018-04-16 18:20:47.456 INFO  (qtp18154549-34) [   x:core] o.a.s.m.SolrMetricManager Closing metric reporters for registry=solr.core.core, tag=16284625
-2018-04-16 18:20:47.456 INFO  (qtp18154549-34) [   x:core] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={core=core&action=RELOAD&wt=json&_=1523902841514} status=0 QTime=627
-2018-04-16 18:20:47.456 INFO  (searcherExecutor-12-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@ff854b[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
-2018-04-16 18:20:47.456 INFO  (searcherExecutor-12-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener done.
-2018-04-16 18:20:47.456 INFO  (searcherExecutor-12-thread-1-processing-x:core) [   x:core] o.a.s.c.SolrCore [core] Registered new searcher Searcher@ff854b[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
-2018-04-16 18:20:48.539 INFO  (qtp18154549-17) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={indexInfo=false&wt=json&_=1523902841514} status=0 QTime=0
-2018-04-16 18:20:48.542 INFO  (qtp18154549-11) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/cores params={wt=json&_=1523902841514} status=0 QTime=4
-2018-04-16 18:20:48.569 INFO  (qtp18154549-19) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json&_=1523902841515} status=0 QTime=30
-2018-04-16 18:21:00.115 INFO  (qtp18154549-18) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
-2018-04-16 18:21:23.938 INFO  (qtp18154549-32) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster4&rows=100000000&version=2.2&wt=xml} hits=2 status=0 QTime=1
-2018-04-16 18:21:41.944 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:humano&rows=100000000&version=2.2&wt=xml} hits=10 status=0 QTime=1
-2018-04-16 18:21:57.827 INFO  (qtp18154549-34) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:humano&rows=100000000&version=2.2&wt=xml} hits=10 status=0 QTime=0
-2018-04-16 18:21:59.488 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:humano&rows=100000000&version=2.2&wt=xml} hits=10 status=0 QTime=0
+2018-04-18 14:06:44.199 INFO  (main) [   ] o.e.j.s.Server jetty-9.3.20.v20170531
+2018-04-18 14:06:45.293 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 7.2.1
+2018-04-18 14:06:45.293 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in standalone mode on port 8983
+2018-04-18 14:06:45.293 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: C:\Users\Marco\source\repos\Solr\Solr\solr
+2018-04-18 14:06:45.371 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2018-04-18T14:06:45.293Z
+2018-04-18 14:06:45.371 INFO  (main) [   ] o.a.s.u.StartupLoggingUtils Property solr.log.muteconsole given. Muting ConsoleAppender named CONSOLE
+2018-04-18 14:06:45.496 INFO  (main) [   ] o.a.s.c.SolrResourceLoader Using system property solr.solr.home: C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr
+2018-04-18 14:06:45.543 INFO  (main) [   ] o.a.s.c.SolrXmlConfig Loading container configuration from C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\solr.xml
+2018-04-18 14:06:47.168 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Found 1 core definitions underneath C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr
+2018-04-18 14:06:47.168 INFO  (main) [   ] o.a.s.c.CorePropertiesLocator Cores are: [core]
+2018-04-18 14:06:47.183 INFO  (coreLoadExecutor-6-thread-1) [   ] o.a.s.c.TransientSolrCoreCacheDefault Allocating transient cache for 2147483647 transient cores
+2018-04-18 14:06:47.277 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrResourceLoader [core] Added 53 libs to classloader, from paths: [/C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/clustering/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/extraction/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/langid/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/contrib/velocity/lib, /C:/Users/Marco/source/repos/Solr/Solr/solr/dist]
+2018-04-18 14:06:47.668 INFO  (main) [   ] o.e.j.s.Server Started @6334ms
+2018-04-18 14:06:48.559 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrConfig Using Lucene MatchVersion: 7.2.1
+2018-04-18 14:06:48.715 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.IndexSchema [core] Schema name=default-config
+2018-04-18 14:06:49.059 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.IndexSchema Loaded schema default-config/1.6 with uniqueid field id
+2018-04-18 14:06:49.090 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.CoreContainer Creating SolrCore 'core' using configuration from instancedir C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core, trusted=true
+2018-04-18 14:06:49.121 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrCore solr.RecoveryStrategy.Builder
+2018-04-18 14:06:49.137 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.c.SolrCore [[core] ] Opening new SolrCore at [C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core], dataDir=[C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core\data\]
+2018-04-18 14:06:49.168 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.r.XSLTResponseWriter xsltCacheLifetimeSeconds=5
+2018-04-18 14:06:49.633 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.UpdateHandler Using UpdateLog implementation: org.apache.solr.update.UpdateLog
+2018-04-18 14:06:49.633 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.UpdateLog Initializing UpdateLog: dataDir= defaultSyncLevel=FLUSH numRecordsToKeep=100 maxNumLogsToKeep=10 numVersionBuckets=65536
+2018-04-18 14:06:49.898 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.CommitTracker Hard AutoCommit: if uncommited for 15000ms; 
+2018-04-18 14:06:49.898 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.u.CommitTracker Soft AutoCommit: disabled
+2018-04-18 14:06:50.023 INFO  (qtp18154549-19) [   ] o.a.s.s.HttpSolrCall [admin] webapp=null path=/admin/info/system params={wt=json} status=0 QTime=32
+2018-04-18 14:06:50.117 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.SolrIndexSearcher Opening [Searcher@aecb6f[core] main]
+2018-04-18 14:06:50.164 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.r.ManagedResourceStorage File-based storage initialized to use dir: C:\Users\Marco\source\repos\Solr\Solr\solr\server\solr\core\conf
+2018-04-18 14:06:50.195 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.h.c.SpellCheckComponent Initializing spell checkers
+2018-04-18 14:06:50.195 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.s.DirectSolrSpellChecker init: {name=default,field=_text_,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2018-04-18 14:06:50.211 INFO  (coreLoadExecutor-6-thread-1) [   x:core] o.a.s.h.ReplicationHandler Commits will be reserved for 10000ms.
+2018-04-18 14:06:50.320 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener sending requests to Searcher@aecb6f[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
+2018-04-18 14:06:50.320 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.c.QuerySenderListener QuerySenderListener done.
+2018-04-18 14:06:50.320 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.h.c.SpellCheckComponent Loading spell index for spellchecker: default
+2018-04-18 14:06:50.336 INFO  (searcherExecutor-7-thread-1-processing-x:core) [   x:core] o.a.s.c.SolrCore [core] Registered new searcher Searcher@aecb6f[core] main{ExitableDirectoryReader(UninvertingDirectoryReader(Uninverting(_k(7.2.1):C40)))}
+2018-04-18 14:07:26.255 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=69
+2018-04-18 14:08:19.939 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 14:10:21.300 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 14:13:09.534 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 14:19:46.465 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 14:20:20.400 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 14:20:40.084 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 14:21:57.905 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 14:22:02.287 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 14:22:50.097 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 14:24:04.906 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:13:55.937 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=10
+2018-04-18 16:14:21.713 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:14:23.080 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:14:30.884 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:14:32.335 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:14:32.864 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:14:33.219 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:14:42.662 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:14:43.617 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:14:45.613 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:14:58.982 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:00.715 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=5
+2018-04-18 16:15:07.919 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:09.591 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:15:12.332 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:33.026 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:33.899 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:34.110 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:34.260 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:34.356 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:34.503 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:34.688 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:15:34.778 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:16:10.109 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:16:36.163 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:17:01.561 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:17:11.473 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:17:20.017 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:17:25.899 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:18:06.112 INFO  (qtp18154549-20) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=1
+2018-04-18 16:25:21.838 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:26:48.469 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:27:37.171 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:27:56.981 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:28:09.811 INFO  (qtp18154549-11) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:28:25.237 INFO  (qtp18154549-15) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:30:42.867 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 16:30:50.474 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=16
+2018-04-18 16:31:55.113 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
+2018-04-18 16:32:16.646 INFO  (qtp18154549-13) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster1&rows=100000000&version=2.2&wt=xml} hits=14 status=0 QTime=0
+2018-04-18 19:58:50.233 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=9
+2018-04-18 19:58:58.368 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:água&rows=100000000&version=2.2&wt=xml} hits=7 status=0 QTime=24
+2018-04-18 20:00:15.198 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=*:*&fl=cluster&rows=100000000&version=2.2&wt=xml} hits=40 status=0 QTime=0
+2018-04-18 20:00:31.687 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:água&rows=100000000&version=2.2&wt=xml} hits=7 status=0 QTime=3
+2018-04-18 20:00:53.985 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=cluster:cluster12&rows=100000000&version=2.2&wt=xml} hits=3 status=0 QTime=1
+2018-04-18 20:02:00.359 INFO  (qtp18154549-19) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:agua&rows=100000000&version=2.2&wt=xml} hits=0 status=0 QTime=1
+2018-04-18 20:02:16.882 INFO  (qtp18154549-16) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:água&rows=100000000&version=2.2&wt=xml} hits=7 status=0 QTime=0
+2018-04-18 20:02:24.019 INFO  (qtp18154549-12) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:água+mineral&rows=100000000&version=2.2&wt=xml} hits=7 status=0 QTime=52
+2018-04-18 20:02:32.193 INFO  (qtp18154549-14) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:água+mineral+seca&rows=100000000&version=2.2&wt=xml} hits=7 status=0 QTime=40
+2018-04-18 20:02:52.449 INFO  (qtp18154549-17) [   x:core] o.a.s.c.S.Request [core]  webapp=/solr path=/select params={q=sumario:água+mineral+mortalidade&rows=100000000&version=2.2&wt=xml} hits=7 status=0 QTime=2

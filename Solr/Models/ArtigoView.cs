@@ -1,8 +1,6 @@
 ﻿using SolrNet;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Solr.Models
 {
@@ -19,7 +17,10 @@ namespace Solr.Models
                 if (ItemQuantidade == null)
                     ItemQuantidade = new Dictionary<string, int>();
 
-                foreach (Artigo artigo in artigos)
+                if (ArtigosRelevantes == null)
+                    ArtigosRelevantes = new Dictionary<string, int>();
+
+                foreach (ArtigoCore artigo in artigos)
                 {
                     if (ItemQuantidade.ContainsKey(artigo.Cluster))
                     {
@@ -29,11 +30,25 @@ namespace Solr.Models
                     {
                         ItemQuantidade.Add(artigo.Cluster, 1);
                     }
-                    
+
+                    string sigla = artigo.NomeSumario.Substring(0, 3);
+
+                    if (ArtigosRelevantes.ContainsKey(sigla))
+                    {
+                        ArtigosRelevantes[sigla]++;
+                    }
+                    else
+                    {
+                        ArtigosRelevantes.Add(sigla, 1);
+                    }
                 }
             }
         }
 
+        public Dictionary<string, int> ArtigosRelevantes { get; set; }
+
         public Dictionary<string, int> ItemQuantidade { get; set; }
+
+        public TimeSpan  QueryTime { get; set; }
     }
 }

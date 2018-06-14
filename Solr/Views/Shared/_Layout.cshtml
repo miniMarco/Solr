@@ -7,18 +7,15 @@
     <link href="@Url.Content("~/content/Site.css")" rel="stylesheet" />
     @RenderSection("styles", false)
 </head>
-    <body>
-        
-            <div class="row">
-                <div class="bg-info sombra" style="width:97%; margin-left:20px;">
-                    <h1 class="cabecalho">SOLR</h1>
-                </div>
-                <hr />
-            </div>
-            <div class="row body-content">
-                @RenderBody()
-                <hr />
-            </div>
+    <body style="padding-top:0px; padding-right:10px;">
+        <div class="bg-info sombra" style="width:99%; margin-left:7px;">
+            <h1 class="cabecalho">SOLR</h1>
+        </div>
+        <hr />
+        <div class="row body-content">
+            @RenderBody()
+            <hr />
+        </div>
         <script src="@Url.Content("~/scripts/jquery-3.0.0.js")"></script>
         <script src="@Url.Content("~/scripts/bootstrap.js")"></script>
         @RenderSection("ScriptPage", false)
