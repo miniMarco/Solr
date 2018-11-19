@@ -14,14 +14,15 @@ namespace Solr
                 new Core{ CoreId = 2, Nome = "Core2" },
                 new Core{ CoreId = 3, Nome = "Core3" },
                 new Core{ CoreId = 4, Nome = "Core4" },
-                new Core{ CoreId = 5, Nome = "Core5" },
-                new Core{ CoreId = 6, Nome = "Core6" },
-                new Core{ CoreId = 7, Nome = "Core7" },
-                new Core{ CoreId = 8, Nome = "Core8" },
-                new Core{ CoreId = 9, Nome = "Core9" },
-                new Core{ CoreId = 10, Nome = "Core10" },
-                new Core{ CoreId = 11, Nome = "Core11" },
-                new Core{ CoreId = 12, Nome = "Core12" }
+                //new Core{ CoreId = 5, Nome = "Core5" },
+                //new Core{ CoreId = 6, Nome = "Core6" },
+                //new Core{ CoreId = 7, Nome = "Core7" },
+                //new Core{ CoreId = 8, Nome = "Core8" },
+                //new Core{ CoreId = 9, Nome = "Core9" },
+                //new Core{ CoreId = 10, Nome = "Core10" },
+                //new Core{ CoreId = 11, Nome = "Core11" },
+                //new Core{ CoreId = 12, Nome = "Core12" },
+                new Core{ CoreId = 13, Nome = "Core Original" }
             };
         }
 
@@ -40,6 +41,7 @@ namespace Solr
         Core9,
         Core10,
         Core11,
-        Core12
+        Core12,
+        Core13
     }
 }

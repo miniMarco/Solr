@@ -1,5 +1,10 @@
 ﻿namespace Solr.Models
 {
+    public class ArtigoOriginal : ArtigoCore
+    {
+        public ArtigoOriginal() : base() { }
+    }
+
     public class Artigo : ArtigoCore
     {
         public Artigo() : base() { } 

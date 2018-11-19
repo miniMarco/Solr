@@ -1,14 +1,21 @@
 ﻿using Solr.Models;
 using SolrNet;
+using SolrNet.Commands.Parameters;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Solr.Controllers
 {
     public class HomeController : Controller
     {
-        LogSimples log = new LogSimples();
+        #region  ****** Propriedades ********
+        Log log = new Log();
+        public ISolrOperations<ArtigoOriginal> solrCoreOriginal
+        {
+            get { return SingleSolrOriginal.GetInstance().CoreOriginalInstance; }
+        }
         public ISolrOperations<Artigo> solrCore
         {
             get { return SingleSolr.GetInstance().CoreInstance; }
@@ -25,42 +32,10 @@ namespace Solr.Controllers
         {
             get { return SingleSolr4.GetInstance().Core4Instance; }
         }
-        public ISolrOperations<Artigo5> solrCore5
-        {
-            get { return SingleSolr5.GetInstance().Core5Instance; }
-        }
-        public ISolrOperations<Artigo6> solrCore6
-        {
-            get { return SingleSolr6.GetInstance().Core6Instance; }
-        }
-        public ISolrOperations<Artigo7> solrCore7
-        {
-            get { return SingleSolr7.GetInstance().Core7Instance; }
-        }
-        public ISolrOperations<Artigo8> solrCore8
-        {
-            get { return SingleSolr8.GetInstance().Core8Instance; }
-        }
-        public ISolrOperations<Artigo9> solrCore9
-        {
-            get { return SingleSolr9.GetInstance().Core9Instance; }
-        }
-        public ISolrOperations<Artigo10> solrCore10
-        {
-            get { return SingleSolr10.GetInstance().Core10Instance; }
-        }
-        public ISolrOperations<Artigo11> solrCore11
-        {
-            get { return SingleSolr11.GetInstance().Core11Instance; }
-        }
-        public ISolrOperations<Artigo12> solrCore12
-        {
-            get { return SingleSolr12.GetInstance().Core12Instance; }
-        }
+        #endregion
 
         public ActionResult Index()
         {
-            
             ViewBag.CoreId = new SelectList(new Core().ListaCores(), "CoreId", "Nome");
             ArtigoView artigosView = new ArtigoView();
             return View(artigosView);
@@ -69,6 +44,8 @@ namespace Solr.Controllers
         [HttpPost]
         public ActionResult Pesquisar(string busca, int CoreId)
         {
+            busca = busca.ToLower();
+            busca = Util.removerAcentos(busca);
             ArtigoView artigosView = new ArtigoView();
             switch (CoreId)
             {
@@ -82,17 +59,18 @@ namespace Solr.Controllers
                         artigos = solrCore.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Pesquisando todos os artigos", "", "Core 1", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        
                     }
                     else
                     {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
+                        SolrMultipleCriteriaQuery query = montarQuery2(busca);
                         medidor.Start();
-                        artigos = solrCore.Query(query);
+                        artigos = (SolrQueryResults<Artigo>)solrCore.Query(montarQuery2(busca), getHighlightOption());
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-
                         artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Busca por termo", busca, "Core 1", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                 break;
                 }
@@ -102,21 +80,21 @@ namespace Solr.Controllers
                     Stopwatch medidor = new Stopwatch();
                     if (string.IsNullOrEmpty(busca))
                     {
-                            medidor.Start();
-                            artigos = solrCore2.Query(SolrQuery.All);
-                            medidor.Stop();
-                            artigosView.Artigos = formatarLista(artigos);
+                        medidor.Start();
+                        artigos = solrCore2.Query(SolrQuery.All);
+                        medidor.Stop();
+                        artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Pesquisando todos os artigos", "", "Core 2", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
                     }
                     else
                     {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
+                        SolrMultipleCriteriaQuery query = montarQuery2(busca);
                         medidor.Start();
-                        artigos = solrCore2.Query(query);
+                        artigos = (SolrQueryResults<Artigo2>)solrCore2.Query(query, getHighlightOption());
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-
                         artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Busca por termo", busca, "Core 2", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }
@@ -124,22 +102,23 @@ namespace Solr.Controllers
                 {
                     SolrQueryResults<Artigo3> artigos;
                     Stopwatch medidor = new Stopwatch();
-                        if (string.IsNullOrEmpty(busca))
+                    if (string.IsNullOrEmpty(busca))
                     {
-                            medidor.Start();
-                            artigos = solrCore3.Query(SolrQuery.All);
-                            medidor.Stop();
-                            artigosView.Artigos = formatarLista(artigos);
-                        }
+                        medidor.Start();
+                        artigos = solrCore3.Query(SolrQuery.All);
+                        medidor.Stop();
+                        artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Pesquisando todos os artigos", "", "Core 3", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                    }
                     else
                     {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
+                        SolrMultipleCriteriaQuery query = montarQuery2(busca);
                         medidor.Start();
-                        artigos = solrCore3.Query(query);
+                        artigos = (SolrQueryResults<Artigo3>)solrCore3.Query(query, getHighlightOption());
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
                         artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Busca por termo", busca, "Core 3", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }
@@ -153,200 +132,41 @@ namespace Solr.Controllers
                         artigos = solrCore4.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                    }
+                        log.inserirLog("Pesquisando todos os artigos", "", "Core 4", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        }
                     else
                     {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
+                        SolrMultipleCriteriaQuery query = montarQuery2(busca);
                         medidor.Start();
-                        artigos = solrCore4.Query(query);
+                        artigos = (SolrQueryResults<Artigo4>)solrCore4.Query(query, getHighlightOption());
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
                         artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Busca por termo", busca, "Core 4", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }
-                case (int)CoresId.Core5:
+                case (int)CoresId.Core13:
                 {
-                    SolrQueryResults<Artigo5> artigos;
+                    SolrQueryResults<ArtigoOriginal> artigos;
                     Stopwatch medidor = new Stopwatch();
                     if (string.IsNullOrEmpty(busca))
                     {
                         medidor.Start();
-                        artigos = solrCore5.Query(SolrQuery.All);
+                        artigos = solrCoreOriginal.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Pesquisando todos os artigos", "", "Core Original", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
                     }
                     else
                     {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
+                        SolrMultipleCriteriaQuery query = montarQuery2(busca);
                         medidor.Start();
-                        artigos = solrCore5.Query(query);
+                        artigos = (SolrQueryResults<ArtigoOriginal>)solrCoreOriginal.Query(query, getHighlightOption());
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
                         artigosView.Artigos = formatarLista(artigos);
-                    }
-                    break;
-                }
-                case (int)CoresId.Core6:
-                {
-                    SolrQueryResults<Artigo6> artigos;
-                    Stopwatch medidor = new Stopwatch();
-                    if (string.IsNullOrEmpty(busca))
-                    {
-                        medidor.Start();
-                        artigos = solrCore6.Query(SolrQuery.All);
-                        medidor.Stop();
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    else
-                    {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
-                        medidor.Start();
-                        artigos = solrCore6.Query(query);
-                        medidor.Stop();
-                        artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    break;
-                }
-                case (int)CoresId.Core7:
-                {
-                    SolrQueryResults<Artigo7> artigos;
-                    Stopwatch medidor = new Stopwatch();
-                    if (string.IsNullOrEmpty(busca))
-                    {
-                        medidor.Start();
-                        artigos = solrCore7.Query(SolrQuery.All);
-                        medidor.Stop();
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    else
-                    {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
-                        medidor.Start();
-                        artigos = solrCore7.Query(query);
-                        medidor.Stop();
-                        artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    break;
-                }
-                case (int)CoresId.Core8:
-                {
-                    SolrQueryResults<Artigo8> artigos;
-                    Stopwatch medidor = new Stopwatch();
-                    if (string.IsNullOrEmpty(busca))
-                    {
-                        medidor.Start();
-                        artigos = solrCore8.Query(SolrQuery.All);
-                        medidor.Stop();
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    else
-                    {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
-                        medidor.Start();
-                        artigos = solrCore8.Query(query);
-                        medidor.Stop();
-                        artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    break;
-                }
-                case (int)CoresId.Core9:
-                {
-                    SolrQueryResults<Artigo9> artigos;
-                    Stopwatch medidor = new Stopwatch();
-                    if (string.IsNullOrEmpty(busca))
-                    {
-                        medidor.Start();
-                        artigos = solrCore9.Query(SolrQuery.All);
-                        medidor.Stop();
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    else
-                    {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
-                        medidor.Start();
-                        artigos = solrCore9.Query(query);
-                        medidor.Stop();
-                        artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    break;
-                }
-                case (int)CoresId.Core10:
-                {
-                    SolrQueryResults<Artigo10> artigos;
-                    Stopwatch medidor = new Stopwatch();
-                    if (string.IsNullOrEmpty(busca))
-                    {
-                        medidor.Start();
-                        artigos = solrCore10.Query(SolrQuery.All);
-                        medidor.Stop();
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    else
-                    {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
-                        medidor.Start();
-                        artigos = solrCore10.Query(query);
-                        medidor.Stop();
-                        artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    break;
-                }
-                case (int)CoresId.Core11:
-                {
-                    SolrQueryResults<Artigo11> artigos;
-                    Stopwatch medidor = new Stopwatch();
-                    if (string.IsNullOrEmpty(busca))
-                    {
-                        medidor.Start();
-                        artigos = solrCore11.Query(SolrQuery.All);
-                        medidor.Stop();
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    else
-                    {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
-                        medidor.Start();
-                        artigos = solrCore11.Query(query);
-                        medidor.Stop();
-                        artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    break;
-                }
-                case (int)CoresId.Core12:
-                {
-                    SolrQueryResults<Artigo12> artigos;
-                    Stopwatch medidor = new Stopwatch();
-                    if (string.IsNullOrEmpty(busca))
-                    {
-                        medidor.Start();
-                        artigos = solrCore12.Query(SolrQuery.All);
-                        medidor.Stop();
-                        artigosView.Artigos = formatarLista(artigos);
-                    }
-                    else
-                    {
-                        SolrMultipleCriteriaQuery query = montarQuery(busca);
-                        medidor.Start();
-                        artigos = solrCore12.Query(query);
-                        medidor.Stop();
-                        artigosView.QueryTime = medidor.Elapsed;
-                        log.escreverLog("Pesquisa por busca: " + medidor.Elapsed);
-                        artigosView.Artigos = formatarLista(artigos);
+                        log.inserirLog("Busca por termo", busca, "Core Original", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }
@@ -363,63 +183,74 @@ namespace Solr.Controllers
             {
                 lista.Add((ArtigoCore)item);
             }
+            lista.Highlights = artigos.Highlights;
+
+            if (lista.Highlights == null)
+                return lista;
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                foreach (var h in lista.Highlights[lista[i].Id])
+                {
+                    lista[i].TextoH = h.Value.FirstOrDefault();
+                }
+            }
 
             return lista;
         }
 
 
-        /**************************/
-
-        [HttpPost]
-        public ActionResult Listar(string busca, int CoreId)
+        private SolrMultipleCriteriaQuery montarQuery2(string busca)
         {
-            ArtigoView artigosView = new ArtigoView();
-            
-            Stopwatch medidor = new Stopwatch();
-            medidor.Start();
-            switch (CoreId)
-            {
-                case (int)CoresId.Core1:
-                    artigosView.Artigos = formatarLista(solrCore.Query(SolrQuery.All));
-                    break;
-                case (int)CoresId.Core2:
-                    artigosView.Artigos = formatarLista(solrCore2.Query(SolrQuery.All));
-                    break;
-                case (int)CoresId.Core3:
-                    artigosView.Artigos = formatarLista(solrCore3.Query(SolrQuery.All));
-                    break;
-            }
-            medidor.Stop();
-
-            artigosView.Artigos = formatarLista(solrCore.Query(SolrQuery.All));
-            
-            log.escreverLog("Pesquisando todos os artigos: " + medidor.Elapsed.ToString());
-            return View("Index", artigosView);
+            List<ISolrQuery> lista = new List<ISolrQuery>();
+            //if (busca.StartsWith("\"") && busca.EndsWith("\""))
+            //{
+                lista.Add(new SolrQueryByField("sumario", busca));
+                return new SolrMultipleCriteriaQuery(lista);
+            //}
+            //else
+            //{
+            //    string[] termos = busca.Split(' ');
+            //    foreach (string termo in termos)
+            //    {
+            //        lista.Add(new SolrQueryByField("sumario", termo));
+            //    }
+            //    return new SolrMultipleCriteriaQuery(lista, SolrMultipleCriteriaQuery.Operator.AND );
+            //}
         }
 
         private SolrMultipleCriteriaQuery montarQuery(string busca)
         {
             List<ISolrQuery> lista = new List<ISolrQuery>();
-            string[] termos = busca.Split(' ');
-            foreach (string termo in termos)
-            {
-                lista.Add(new SolrQuery("sumario:" + termo));
+            if (busca.StartsWith("\"") && busca.EndsWith("\""))
+            { 
+                lista.Add(new SolrQueryByField("sumario", busca));
+                return new SolrMultipleCriteriaQuery(lista);
             }
-            return new SolrMultipleCriteriaQuery(lista, "AND");
+            else
+            {
+                string[] termos = busca.Split(' ');
+                foreach (string termo in termos)
+                {
+                    lista.Add(new SolrQueryByField("sumario", termo));
+                }
+                return new SolrMultipleCriteriaQuery(lista, "AND");
+            }
         }
 
-        public ActionResult PesquisarPorCluster(string key)
+        private QueryOptions getHighlightOption()
         {
-            ArtigoView artigosView = new ArtigoView();
-            Stopwatch medidor = new Stopwatch();
-            medidor.Start();
-            SolrQueryResults<Artigo> result = solrCore.Query(new SolrQuery("cluster:" + key));
-            medidor.Stop();
-            artigosView.Artigos = formatarLista(result);
-            
-            log.escreverLog("Pesquisa por cluster: " + medidor.Elapsed.ToString());
+            HighlightingParameters highlight = new HighlightingParameters();
+            highlight.Fragsize = 0;
+            highlight.Fields = new List<string>();
+            highlight.Fields.Add("sumario");
+            highlight.BeforeTerm = "<span style=\"background-color: #FFFF00\">";
+            highlight.AfterTerm = "</span>";
 
-            return View("Index", artigosView);
+            return new QueryOptions
+            {
+                Highlight = highlight
+            };
         }
     }
 }

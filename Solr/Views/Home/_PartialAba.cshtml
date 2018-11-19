@@ -14,6 +14,7 @@
     {
 
         var tabelaId = "tabela" + (new Random()).Next(1, 1000);
+        SolrNet.Impl.HighlightedSnippets hl = null;
 
         <table id="tabela" class="table table-striped">
             <thead>
@@ -24,8 +25,18 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach (var item in Model.Artigos)
                 {
+                    if (Model.Artigos.Highlights != null)
+                    {
+                        hl = Model.Artigos.Highlights[item.Id];
+                    }
+                    else
+                    {
+                        hl = null;
+                    }
+
                     var nomeComSharp = "#" + item.NomeSumario.Split('.')[0];
                     var nome = item.NomeSumario.Split('.')[0];
                     <tr>
@@ -39,7 +50,15 @@
                                     <p style="text-align:justify;">
                                         @if (item.Sumario.Count != 0)
                                         {
-                                            @Html.DisplayFor(modelItem => item.Sumario[0])
+                                            if (hl != null)
+                                            {
+                                                @Html.Raw(item.TextoH)
+                                            }
+                                            else
+                                            {
+                                                @Html.DisplayFor(modelItem => item.Sumario[0])
+                                            }
+
                                         }
                                     </p>
                                 </div>

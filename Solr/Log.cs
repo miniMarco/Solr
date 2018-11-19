@@ -1,56 +1,87 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Data;
+using System.Data.OleDb;
 using System.IO;
-using System.Linq;
-using System.Web;
 
 namespace Solr
 {
     public class Log
     {
-        string NOME_LOG = "MeuLog";
-        string SOURCE = "MinhaAplicacao";
+        string arquivoExcel = "c:\\Arquivo\\log.xlsx";
+        OleDbConnection conn;
+        OleDbCommand cmd;
+
 
         public Log()
         {
-            if (!EventLog.SourceExists(SOURCE))
-                EventLog.CreateEventSource(SOURCE, NOME_LOG);
         }
 
-        public void EscreverEntrada(string entrada, EventLogEntryType tipoEvento)
+        private void prepararConexao()
         {
-            EventLog.WriteEntry(SOURCE, entrada, tipoEvento);
+            conn = new OleDbConnection(getConnectionString());
+            cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = conn;
         }
 
-        public void EscreverEntrada(string entrada)
+        private void abrirConexao()
         {
-            EscreverEntrada(entrada, EventLogEntryType.Information);
+            prepararConexao();
+            conn.Open();
         }
 
-        public void EscreverEntrada(Exception ex)
+        private void fecharConexao()
         {
-            EscreverEntrada(ex.Message, EventLogEntryType.Error);
+            if (cmd != null)
+            {
+                cmd.Parameters.Clear();
+                cmd.Dispose();
+            }
+            cmd = null;
+
+            if (conn != null)
+            {
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+                conn.Dispose();
+            }
+            conn = null;
         }
-    }
 
-    public class LogSimples
-    {
-        public LogSimples()
+        public void inserirLog(string descricao, string pesquisa, string core, string precision, string recall, string medidaF, TimeSpan tempoPesquisa)
         {
-            
+            abrirConexao();
+
+            string sql = "insert into [Plan1$] ";
+            sql += "([Descricao], [Pesquisa], [Core], [Precision], [Recall], [Medida-F], [Tempo], [Hora]) ";
+            sql += "values ";
+            sql += "(@descricao, @pesquisa, @core, @precision, @recall, @medidaF, @tempoPesquisa, @hora)";
+
+            cmd.CommandText = sql;
+            cmd.Parameters.Add("@descricao", OleDbType.VarChar, 255).Value = descricao;
+            cmd.Parameters.Add("@pesquisa", OleDbType.VarChar, 255).Value = pesquisa;
+            cmd.Parameters.Add("@core", OleDbType.VarChar, 255).Value = core;
+            cmd.Parameters.Add("@precision", OleDbType.VarChar, 255).Value = string.IsNullOrEmpty(precision) ? string.Empty : precision;
+            cmd.Parameters.Add("@recall", OleDbType.VarChar, 255).Value = string.IsNullOrEmpty(recall) ? string.Empty : recall;
+            cmd.Parameters.Add("@medidaF", OleDbType.VarChar, 255).Value = string.IsNullOrEmpty(medidaF) ? string.Empty : medidaF;
+            cmd.Parameters.Add("@tempoPesquisa", OleDbType.VarChar, 255).Value = tempoPesquisa.ToString();
+            cmd.Parameters.Add("@hora", OleDbType.Date).Value = DateTime.Now;
+
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+
+            fecharConexao();
         }
 
-        public void escreverLog()
-        { }
-
-        internal void escreverLog(string texto)
+        private string getConnectionString()
         {
-            string CaminhoNome = "c:\\Arquivo\\Log.txt";
-            if (!File.Exists(CaminhoNome))
-                File.Create(CaminhoNome).Close();
+            string Ext = Path.GetExtension(arquivoExcel);
 
-            File.AppendAllText(CaminhoNome, "[" + DateTime.Now + "] " + texto + "\r\n");
+            if (Ext == ".xlsx")
+                return "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + arquivoExcel + ";Extended Properties='Excel 12.0 Xml;HDR=YES;'";
+            else
+                return "Provider=Microsoft.ACE.OLEDB.12.0; Data Source =" + arquivoExcel + ";Extended Properties = 'Excel 8.0;HDR=YES'";
+
         }
     }
 }

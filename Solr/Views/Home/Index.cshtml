@@ -61,67 +61,6 @@
     @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
 </div>
 
-    @*<div class="col-md-2">
-            <div style="height:80px; padding-top:1px;">
-                @Html.ActionLink("Limpar pesquisa", "Index", null, new { @class = "btn btn-default bordaCluster" })
-            </div>
-            <div style="margin-top:15px;">
-                @if (Model.ItemQuantidade != null)
-                {
-                    foreach (KeyValuePair<string, int> item in Model.ItemQuantidade)
-                    {
-                        <div>
-                            @Html.ActionLink(item.Key + " (" + item.Value + ")", "PesquisarPorCluster", new { key = item.Key }, new { @class = "btn btn-default bordaCluster" })
-                        </div>
-                    }
-                }
-            </div>
-        </div>*@
-    @*
-        <div class="col-md-10">
-            <div class="form-inline borda fundo" style="text-align:right; display:block; ">
-
-                @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.DropDownList("CoreId")
-                    @Html.TextBox("busca", null, new { @class = "form-control" })
-                    <input type="submit" value="Pesquisar" class="btn btn-sm btn-primary" />
-                }
-                @using (Html.BeginForm("Listar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
-                {
-                    @Html.DropDownList("CoreId")
-                    @Html.AntiForgeryToken()
-                    @Html.Hidden("busca", null, new { @class = "form-control" })
-                    <input type="submit" value="Listar todos os artigos" class="btn btn-sm btn-primary" />
-                }
-            </div>
-            <div style="margin-top:30px;">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link" id="core1-tab" data-toggle="tab" href="#core1" role="tab" aria-controls="core1" aria-selected="false">Core1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="core2-tab" data-toggle="tab" href="#core2" role="tab" aria-controls="core2" aria-selected="false">Core2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="core3-tab" data-toggle="tab" href="#core3" role="tab" aria-controls="core3" aria-selected="false">Core3</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade active" id="core1" role="tabpanel" aria-labelledby="core1-tab">
-                        @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
-                    </div>
-                    <div class="tab-pane fade" id="core2" role="tabpanel" aria-labelledby="core2-tab">
-                        @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
-                    </div>
-                    <div class="tab-pane fade" id="core3" role="tabpanel" aria-labelledby="core3-tab">
-                        @Html.Partial("~/Views/Home/_PartialAba.cshtml", Model)
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
     @section styles
 {
         <link href="@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css")" rel="stylesheet" />

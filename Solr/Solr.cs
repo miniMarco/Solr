@@ -8,6 +8,24 @@ using System.Web;
 
 namespace Solr
 {
+    public class SingleSolrOriginal
+    {
+        /*Padrão Singleton*/
+
+        private static SingleSolrOriginal instance;
+        private SingleSolrOriginal() { }
+        public static SingleSolrOriginal GetInstance()
+        {
+            if (instance == null)
+                instance = new SingleSolrOriginal();
+            return instance;
+        }
+        public ISolrOperations<ArtigoOriginal> CoreOriginalInstance
+        {
+            get { return ServiceLocator.Current.GetInstance<ISolrOperations<ArtigoOriginal>>(); }
+        }
+    }
+
     public class SingleSolr
     {
         /*Padrão Singleton*/
