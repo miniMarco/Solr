@@ -162,6 +162,17 @@ namespace Solr.Models
             return itens.Count == 0 ? ArtigosRelevantes : itens;
         }
 
+        private bool ehTermoDefinido(string termo)
+        {
+            if (!string.IsNullOrEmpty(termo) && (termo.Equals("educacao especial") || termo.Equals("educacao permanente")
+                || termo.Equals("educacao pre escolar") || termo.Equals("sociologia da educacao")))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
         public Dictionary<string, int> ArtigosRelevantes { get; set; }
 
         public Dictionary<string, int> ItemQuantidade { get; set; }
