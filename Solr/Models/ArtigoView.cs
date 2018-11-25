@@ -67,16 +67,17 @@ namespace Solr.Models
         {
             Dictionary<string, int> itens = new Dictionary<string, int>();
             itens = extrairArtigosCorretos(termo);
+            bool termoDefinido = Util.ehTermoDefinido(termo);
             foreach (KeyValuePair<string, int> item in itens)
             {
-                if (string.IsNullOrEmpty(termo))
+                if (!termoDefinido)
                     precision += " " + item.Key + ": " + item.Value.ToString() + "/" + Artigos.Count.ToString() + " = " + ((double)item.Value / (double)Artigos.Count).ToString("0.000");
                 else
                     precision += " " + ((double)item.Value / (double)Artigos.Count).ToString("0.000");
             }
             return precision;
         }
-                
+
         private string recall;
         public string Recall
         {
@@ -93,10 +94,10 @@ namespace Solr.Models
         {
             Dictionary<string, int> itens = new Dictionary<string, int>();
             itens = extrairArtigosCorretos(termo);
-
+            bool termoDefinido = Util.ehTermoDefinido(termo);
             foreach (KeyValuePair<string, int> item in itens)
             {
-                if (string.IsNullOrEmpty(termo))
+                if (!termoDefinido)
                     recall += " " + item.Key + ": " + item.Value.ToString() + "/10 = " + ((double)item.Value / (double)10).ToString("0.000");
                 else
                     recall += " " + ((double)item.Value / (double)10).ToString("0.000");
@@ -120,13 +121,13 @@ namespace Solr.Models
         {
             Dictionary<string, int> itens = new Dictionary<string, int>();
             itens = extrairArtigosCorretos(termo);
-
+            bool termoDefinido = Util.ehTermoDefinido(termo);
             foreach (KeyValuePair<string, int> item in itens)
             {
                 double p = (double)item.Value / (double)Artigos.Count;
                 double r = (double)item.Value / (double)10;
 
-                if (string.IsNullOrEmpty(termo))
+                if (!termoDefinido)
                     medidaF += " " + item.Key + ": " + (2 * ((p * r) / (p + r))).ToString("0.000");
                 else
                     medidaF += " " + (2 * ((p * r) / (p + r))).ToString("0.000");
@@ -160,17 +161,6 @@ namespace Solr.Models
             }
 
             return itens.Count == 0 ? ArtigosRelevantes : itens;
-        }
-
-        private bool ehTermoDefinido(string termo)
-        {
-            if (!string.IsNullOrEmpty(termo) && (termo.Equals("educacao especial") || termo.Equals("educacao permanente")
-                || termo.Equals("educacao pre escolar") || termo.Equals("sociologia da educacao")))
-            {
-                return true;
-            }
-            else
-                return false;
         }
 
         public Dictionary<string, int> ArtigosRelevantes { get; set; }

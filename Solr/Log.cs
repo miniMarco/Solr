@@ -48,17 +48,22 @@ namespace Solr
             conn = null;
         }
 
-        public void inserirLog(string descricao, string pesquisa, string core, string precision, string recall, string medidaF, TimeSpan tempoPesquisa)
+        public void inserirLog(string pesquisa, string core, string precision, string recall, string medidaF, TimeSpan tempoPesquisa)
         {
             abrirConexao();
 
-            string sql = "insert into [Plan1$] ";
-            sql += "([Descricao], [Pesquisa], [Core], [Precision], [Recall], [Medida-F], [Tempo], [Hora]) ";
+            string sql = "";
+
+            if(Util.ehTermoDefinido(pesquisa))
+                sql += "insert into [Plan1$] ";
+            else
+                sql += "insert into [Plan2$] ";
+
+            sql += "([Pesquisa], [Core], [Precision], [Recall], [Medida-F], [Tempo], [Hora]) ";
             sql += "values ";
-            sql += "(@descricao, @pesquisa, @core, @precision, @recall, @medidaF, @tempoPesquisa, @hora)";
+            sql += "(@pesquisa, @core, @precision, @recall, @medidaF, @tempoPesquisa, @hora)";
 
             cmd.CommandText = sql;
-            cmd.Parameters.Add("@descricao", OleDbType.VarChar, 255).Value = descricao;
             cmd.Parameters.Add("@pesquisa", OleDbType.VarChar, 255).Value = pesquisa;
             cmd.Parameters.Add("@core", OleDbType.VarChar, 255).Value = core;
             cmd.Parameters.Add("@precision", OleDbType.VarChar, 255).Value = string.IsNullOrEmpty(precision) ? string.Empty : precision;

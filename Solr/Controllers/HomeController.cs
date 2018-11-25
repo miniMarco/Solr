@@ -59,7 +59,7 @@ namespace Solr.Controllers
                         artigos = solrCore.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Pesquisando todos os artigos", "", "Core 1", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 1", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
                         
                     }
                     else
@@ -70,7 +70,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Busca por termo", busca, "Core 1", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core 1", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                 break;
                 }
@@ -84,7 +84,7 @@ namespace Solr.Controllers
                         artigos = solrCore2.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Pesquisando todos os artigos", "", "Core 2", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 2", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
                     }
                     else
                     {
@@ -94,7 +94,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Busca por termo", busca, "Core 2", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core 2", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }
@@ -108,7 +108,7 @@ namespace Solr.Controllers
                         artigos = solrCore3.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Pesquisando todos os artigos", "", "Core 3", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 3", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
                     }
                     else
                     {
@@ -118,7 +118,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Busca por termo", busca, "Core 3", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core 3", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }
@@ -132,7 +132,7 @@ namespace Solr.Controllers
                         artigos = solrCore4.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Pesquisando todos os artigos", "", "Core 4", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 4", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
                         }
                     else
                     {
@@ -142,7 +142,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Busca por termo", busca, "Core 4", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core 4", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }
@@ -156,7 +156,7 @@ namespace Solr.Controllers
                         artigos = solrCoreOriginal.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Pesquisando todos os artigos", "", "Core Original", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core Original", artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
                     }
                     else
                     {
@@ -166,7 +166,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("Busca por termo", busca, "Core Original", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core Original", artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
                     }
                     break;
                 }

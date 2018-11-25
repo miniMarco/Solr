@@ -31,12 +31,12 @@ namespace Solr
 
             /*** Comentar as linhas para não subir mais artigos para o solr ******/
 
-            Operacoes op = new Operacoes(); 
+            //Operacoes op = new Operacoes(); 
             //op.processarArtigoOriginal();
-            op.processarArtigosC1();
+            //op.processarArtigosC1();
             //op.processarArtigosC2();
             //op.processarArtigosC3();
-           // op.processarArtigosC4();   /* colocar aqui */
+            //op.processarArtigosC4();   /* colocar aqui */
         }
     }
 }

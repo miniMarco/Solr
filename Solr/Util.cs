@@ -44,5 +44,16 @@ namespace Solr
 
             return semAcento;
         }
+
+        public static bool ehTermoDefinido(string termo)
+        {
+            if (!string.IsNullOrEmpty(termo) && (termo.Equals("educacao especial") || termo.Equals("educacao permanente")
+                || termo.Equals("educacao pre escolar") || termo.Equals("sociologia da educacao")))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
