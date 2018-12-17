@@ -10,10 +10,10 @@ namespace Solr
         public List<Core> ListaCores()
         {
             return new List<Core> {
-                new Core{ CoreId = 1, Nome = "Core_3" },
-                new Core{ CoreId = 2, Nome = "Core_4" },
-                new Core{ CoreId = 3, Nome = "Core_5" },
-                new Core{ CoreId = 4, Nome = "Core_sem" },
+                new Core{ CoreId = 1, Nome = "Core1" },
+                new Core{ CoreId = 2, Nome = "Core2" },
+                new Core{ CoreId = 3, Nome = "Core3" },
+                new Core{ CoreId = 4, Nome = "Core4" },
                 //new Core{ CoreId = 5, Nome = "Core5" },
                 //new Core{ CoreId = 6, Nome = "Core6" },
                 //new Core{ CoreId = 7, Nome = "Core7" },

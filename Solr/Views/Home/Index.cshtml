@@ -4,55 +4,62 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row borda fundo" style="display:block; margin-left:15px; margin-right:15px;">
-    <div class="col-md-2">
-        @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post, htmlAttributes: new { @style = "display:inline-block" }))
-        {
-
+    @using (Html.BeginForm("Pesquisar", "Home", FormMethod.Post))
+    {
+        <div class="col-md-2"style = "display:inline-block" }>
             @Html.AntiForgeryToken()
             <div style="margin:5px;">@Html.TextBox("busca", null, new { @class = "form-control" })</div>
             <div style="margin:5px;">@Html.DropDownList("CoreId")</div>
             <div style="margin:5px;"><input type="submit" value="Pesquisar" class="btn btn-sm btn-primary" /></div>
-        }
-    </div>
-    <div class="col-md-2">
-        <p>Precision: </p>
-        @if (Model.ArtigosRelevantes != null)
-        {
-            foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
+
+        </div>
+        <div class="col-md-2">
+            <p>Precision: </p>
+            @if (Model.ArtigosRelevantes != null)
             {
-                double result = (double)item.Value / (double)Model.Artigos.Count;
-                <p style="padding:0px; margin:0px;">@item.Key: @item.Value/@Model.Artigos.Count = @result.ToString("0.000")</p>
+                foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
+                {
+                    double result = (double)item.Value / (double)Model.Artigos.Count;
+                    <p style="padding:0px; margin:0px;">@item.Key: @item.Value/@Model.Artigos.Count = @result.ToString("0.000")</p>
+                }
             }
-        }
 
-    </div>
+        </div>
 
-    <div class="col-md-2">
-        <p>Recall: </p>
-        @if (Model.ArtigosRelevantes != null)
-        {
-            foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
+        <div class="col-md-2">
+            <div class="col-md-3" style="padding:0px;height:22px;">
+                <p style="margin:0px;">Recall:</p>
+            </div>
+            <div class="col-md-9" style="padding:0px;">
+                @Html.TextBox("quantidadeRelevante", null, new { @class = "form -control", @style = "width:55px;height:20px;margin-bottom:5px;" })
+            </div>
+            <div>
+                @if (Model.ArtigosRelevantes != null)
+                {
+                    foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
+                    {
+                        double result = (double)item.Value / Convert.ToDouble(ViewBag.QuantidadeRelevante);
+                <p style="padding:0px; margin:0px; text-align:left;">@item.Key: @item.Value/@Convert.ToDouble(ViewBag.QuantidadeRelevante) = @result.ToString("0.000")</p>
+                    }
+                }
+            </div>
+
+        </div>
+        <div class="col-md-2">
+            <p>Medida-F: 2*((p*r)/(p+r)) </p>
+            @if (Model.ArtigosRelevantes != null)
             {
-                double result = (double)item.Value / (double)10;
-                <p style="padding:0px; margin:0px;">@item.Key: @item.Value/10 = @result.ToString("0.000")</p>
-            }
-        }
+                foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
+                {
+                    double p = (double)item.Value / (double)Model.Artigos.Count;
 
-    </div>
-    <div class="col-md-2">
-        <p>Medida-F: 2*((p*r)/(p+r)) </p>
-        @if (Model.ArtigosRelevantes != null)
-        {
-            foreach (KeyValuePair<string, int> item in Model.ArtigosRelevantes)
-            {
-                double p = (double)item.Value / (double)Model.Artigos.Count;
-
-                double r = (double)item.Value / (double)10;
-                double mf = 2 * ((p * r) / (p + r));
-                <p style="padding:0px; margin:0px;">@item.Key: @mf.ToString("0.000")</p>
+                    double r = (double)item.Value / Convert.ToDouble(ViewBag.QuantidadeRelevante);
+                    double mf = 2 * ((p * r) / (p + r));
+                    <p style="padding:0px; margin:0px;">@item.Key: @mf.ToString("0.000")</p>
+                }
             }
-        }
-    </div>
+        </div>
+    }
     <div class="col-md-4">
         <p>Tempo da pesquisa: @Model.QueryTime.ToString()</p>
     </div>

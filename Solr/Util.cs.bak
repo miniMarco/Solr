@@ -13,32 +13,32 @@ namespace Solr
             foreach (char letra in texto)
             {
                 if (letra == 'Á' || letra == 'À' || letra == 'Ã' || letra == 'Â')
-                    semAcento = semAcento.Replace(letra, 'A');
+                    semAcento.Replace(letra, 'A');
                 else if (letra == 'á' || letra == 'à' || letra == 'ã' || letra == 'â')
-                    semAcento = semAcento.Replace(letra, 'a');
+                    semAcento.Replace(letra, 'a');
 
                 else if (letra == 'É' || letra == 'È' || letra == 'Ê')
-                    semAcento = semAcento.Replace(letra, 'E');
-                else if (letra == 'é' || letra == 'è' || letra == 'ê')
-                    semAcento = semAcento.Replace(letra, 'e');
+                    semAcento.Replace(letra, 'E');
+                else if (letra == 'é' || letra == 'è' || letra == 'ê') 
+                    semAcento.Replace(letra, 'e');
 
                 else if (letra == 'Í' || letra == 'Ì' || letra == 'Î')
-                    semAcento = semAcento.Replace(letra, 'I');
+                    semAcento.Replace(letra, 'I');
                 else if (letra == 'í' || letra == 'ì' || letra == 'î')
-                    semAcento = semAcento.Replace(letra, 'i');
+                    semAcento.Replace(letra, 'i');
 
                 else if (letra == 'Ó' || letra == 'Ò' || letra == 'Õ' || letra == 'Ô')
-                    semAcento = semAcento.Replace(letra, 'O');
+                    semAcento.Replace(letra, 'O');
                 else if (letra == 'ó' || letra == 'ò' || letra == 'õ' || letra == 'ô')
-                    semAcento = semAcento.Replace(letra, 'o');
+                    semAcento.Replace(letra, 'o');
 
                 else if (letra == 'Ú' || letra == 'Ù' || letra == 'Û')
-                    semAcento = semAcento.Replace(letra, 'U');
+                    semAcento.Replace(letra, 'U');
                 else if (letra == 'ú' || letra == 'ù' || letra == 'û')
-                    semAcento = semAcento.Replace(letra, 'u');
+                    semAcento.Replace(letra, 'u');
 
                 else if (letra == 'Ç' || letra == 'ç')
-                    semAcento = semAcento.Replace(letra, 'c');
+                    semAcento.Replace(letra, 'c');
             }
 
 

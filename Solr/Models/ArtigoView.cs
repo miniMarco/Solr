@@ -51,6 +51,8 @@ namespace Solr.Models
             }
         }
 
+        public int QuantidadeRelevantes { get; set; }
+        
         private string precision;
         public string Precision
         {
@@ -98,9 +100,9 @@ namespace Solr.Models
             foreach (KeyValuePair<string, int> item in itens)
             {
                 if (!termoDefinido)
-                    recall += " " + item.Key + ": " + item.Value.ToString() + "/10 = " + ((double)item.Value / (double)10).ToString("0.000");
+                    recall += " " + item.Key + ": " + item.Value.ToString() + "/" + QuantidadeRelevantes + " = " + ((double)item.Value / (double)10).ToString("0.000");
                 else
-                    recall += " " + ((double)item.Value / (double)10).ToString("0.000");
+                    recall += " " + ((double)item.Value / (double)QuantidadeRelevantes).ToString("0.000");
             }
             return recall;
         }
