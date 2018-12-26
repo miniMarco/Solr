@@ -25,9 +25,9 @@
         public Artigo4() : base() { }
     }
 
-    public class Artigo5 : ArtigoCore
+    public class ArtigoSumarizado : ArtigoCore
     {
-        public Artigo5() : base() { }
+        public ArtigoSumarizado() : base() { }
     }
 
     public class Artigo6 : ArtigoCore

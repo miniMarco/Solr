@@ -34,7 +34,7 @@ namespace Solr.Models
                         ArtigosRelevantes.Add(sigla, 1);
                     }
 
-                    if (artigo is ArtigoOriginal)
+                    if (artigo is ArtigoOriginal || artigo is ArtigoSumarizado)
                         continue;
 
                     if (ItemQuantidade.ContainsKey(artigo.Cluster))

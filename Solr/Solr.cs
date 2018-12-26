@@ -26,6 +26,25 @@ namespace Solr
         }
     }
 
+    public class SingleSolrSumarizado
+    {
+        /*Padrão Singleton*/
+
+        private static SingleSolrSumarizado instance;
+        private SingleSolrSumarizado() { }
+        public static SingleSolrSumarizado GetInstance()
+        {
+            if (instance == null)
+                instance = new SingleSolrSumarizado();
+            return instance;
+        }
+        public ISolrOperations<ArtigoSumarizado> CoreSumarizadoInstance
+        {
+            get { return ServiceLocator.Current.GetInstance<ISolrOperations<ArtigoSumarizado>>(); }
+        }
+    }
+
+
     public class SingleSolr
     {
         /*Padrão Singleton*/
@@ -106,9 +125,9 @@ namespace Solr
                 instance = new SingleSolr5();
             return instance;
         }
-        public ISolrOperations<Artigo5> Core5Instance
+        public ISolrOperations<ArtigoSumarizado> Core5Instance
         {
-            get { return ServiceLocator.Current.GetInstance<ISolrOperations<Artigo5>>(); }
+            get { return ServiceLocator.Current.GetInstance<ISolrOperations<ArtigoSumarizado>>(); }
         }
     }
 

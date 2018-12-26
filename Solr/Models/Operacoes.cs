@@ -25,6 +25,21 @@ namespace Solr.Models
 
         /**************************************************************************************/
 
+        public void coreSumarizadoDeletarTudo()
+        {
+            ISolrOperations<ArtigoSumarizado> solr = SingleSolrSumarizado.GetInstance().CoreSumarizadoInstance;
+            solr.Delete(SolrQuery.All);
+            solr.Commit();
+        }
+        public void coreSumarizadoAdicionarArtigo(List<ArtigoSumarizado> artigos)
+        {
+            ISolrOperations<ArtigoSumarizado> solr = SingleSolrSumarizado.GetInstance().CoreSumarizadoInstance;
+            solr.AddRange(artigos);
+            solr.Commit();
+        }
+
+        /**************************************************************************************/
+        
         public void core1DeletarTudo()
         {
             ISolrOperations<Artigo> solr = SingleSolr.GetInstance().CoreInstance;
@@ -148,6 +163,43 @@ namespace Solr.Models
                 throw new Exception(e.Message);
             }
         }
+
+        public void processarArtigoSumarizado()
+        {
+            DirectoryInfo dirInfo = new DirectoryInfo("c:\\arquivo\\sumarizado");
+            List<ArtigoSumarizado> listaArtigos = new List<ArtigoSumarizado>();
+            foreach (FileInfo file in dirInfo.GetFiles())
+            {
+                try
+                {
+                    StreamReader arquivoOriginal = new StreamReader("c:/Arquivo/sumarizado/" + file.Name, Encoding.Default);
+
+                    string linha = string.Empty;
+
+                    List<string> texto = new List<string>();
+                    texto.Add(File.ReadAllText("c:/Arquivo/sumarizado/" + file.Name, Encoding.UTF8));
+                    listaArtigos.Add(new ArtigoSumarizado() { Cluster = "", NomeSumario = file.Name, Sumario = texto });
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+
+            try
+            {
+                Operacoes op = new Operacoes();
+                op.coreSumarizadoDeletarTudo();
+                op.coreSumarizadoAdicionarArtigo(listaArtigos);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+
+
 
         /**Core 01 ****/
         private List<Artigo> processarArquivoC1(string nomeArquivo)

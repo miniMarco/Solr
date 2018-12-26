@@ -17,6 +17,10 @@ namespace Solr.Controllers
         {
             get { return SingleSolrOriginal.GetInstance().CoreOriginalInstance; }
         }
+        public ISolrOperations<ArtigoSumarizado> solrCoreSumarizado
+        {
+            get { return SingleSolrSumarizado.GetInstance().CoreSumarizadoInstance; }
+        }
         public ISolrOperations<Artigo> solrCore
         {
             get { return SingleSolr.GetInstance().CoreInstance; }
@@ -33,6 +37,7 @@ namespace Solr.Controllers
         {
             get { return SingleSolr4.GetInstance().Core4Instance; }
         }
+        
         #endregion
 
         public ActionResult Index()
@@ -179,6 +184,30 @@ namespace Solr.Controllers
                     }
                     break;
                 }
+                case (int)CoresId.Core14:
+                    {
+                        SolrQueryResults<ArtigoSumarizado> artigos;
+                        Stopwatch medidor = new Stopwatch();
+                        if (string.IsNullOrEmpty(busca))
+                        {
+                            medidor.Start();
+                            artigos = solrCoreSumarizado.Query(SolrQuery.All);
+                            medidor.Stop();
+                            artigosView.Artigos = formatarLista(artigos);
+                            log.inserirLog("", "Core_sum", artigosView.QuantidadeRelevantes, artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        }
+                        else
+                        {
+                            SolrMultipleCriteriaQuery query = montarQuery2(busca);
+                            medidor.Start();
+                            artigos = (SolrQueryResults<ArtigoSumarizado>)solrCoreSumarizado.Query(query, getHighlightOption());
+                            medidor.Stop();
+                            artigosView.QueryTime = medidor.Elapsed;
+                            artigosView.Artigos = formatarLista(artigos);
+                            log.inserirLog(busca, "Core_sum", artigosView.QuantidadeRelevantes, artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        }
+                        break;
+                    }
             }
 
             ViewBag.CoreId = new SelectList(new Core().ListaCores(), "CoreId", "Nome");

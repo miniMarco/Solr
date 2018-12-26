@@ -28,15 +28,17 @@ namespace Solr
             Startup.Init<Artigo2>("http://localhost:8983/solr/core2");
             Startup.Init<Artigo3>("http://localhost:8983/solr/core3");
             Startup.Init<Artigo4>("http://localhost:8983/solr/core4");
+            Startup.Init<ArtigoSumarizado>("http://localhost:8983/solr/coreSumarizado");
 
             /*** Comentar as linhas para não subir mais artigos para o solr ******/
 
-            //Operacoes op = new Operacoes(); 
+            Operacoes op = new Operacoes(); 
             //op.processarArtigoOriginal();
             //op.processarArtigosC1();
             //op.processarArtigosC2();
             //op.processarArtigosC3();
-            //op.processarArtigosC4();   /* colocar aqui */
+            //op.processarArtigosC4();  
+            op.processarArtigoSumarizado();
         }
     }
 }
