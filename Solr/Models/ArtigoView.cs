@@ -155,11 +155,15 @@ namespace Solr.Models
             }
             else if (termo == "educacao pre escolar")
             {
-                itens = ArtigosRelevantes.Where(item => item.Key == "EPEA").ToDictionary(k => k.Key, v => v.Value);
+                itens = ArtigosRelevantes.Where(item => item.Key == "EPE").ToDictionary(k => k.Key, v => v.Value);
             }
             else if (termo == "sociologia da educacao")
             {
                 itens = ArtigosRelevantes.Where(item => item.Key == "SEA").ToDictionary(k => k.Key, v => v.Value);
+            }
+            else if (termo == "psicologia educacional")
+            {
+                itens = ArtigosRelevantes.Where(item => item.Key == "PEA").ToDictionary(k => k.Key, v => v.Value);
             }
 
             return itens.Count == 0 ? ArtigosRelevantes : itens;

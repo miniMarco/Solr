@@ -48,7 +48,7 @@ namespace Solr
         public static bool ehTermoDefinido(string termo)
         {
             if (!string.IsNullOrEmpty(termo) && (termo.Equals("educacao especial") || termo.Equals("educacao permanente")
-                || termo.Equals("educacao pre escolar") || termo.Equals("sociologia da educacao")))
+                || termo.Equals("educacao pre escolar") || termo.Equals("sociologia da educacao") || termo.Equals("psicologia educacional")))
             {
                 return true;
             }

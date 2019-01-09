@@ -177,7 +177,7 @@ namespace Solr.Models
                     string linha = string.Empty;
 
                     List<string> texto = new List<string>();
-                    texto.Add(File.ReadAllText("c:/Arquivo/sumarizado/" + file.Name, Encoding.UTF8));
+                    texto.Add(File.ReadAllText("c:/Arquivo/sumarizado/" + file.Name, Encoding.Default));
                     listaArtigos.Add(new ArtigoSumarizado() { Cluster = "", NomeSumario = file.Name, Sumario = texto });
                 }
                 catch (Exception ex)
