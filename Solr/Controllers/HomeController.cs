@@ -73,7 +73,7 @@ namespace Solr.Controllers
                         artigos = solrCore.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("", "Core 1", artigosView.QuantidadeRelevantes, artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 1", artigosView, medidor.Elapsed);
                         
                     }
                     else
@@ -84,7 +84,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog(busca,  "Core 1", artigosView.QuantidadeRelevantes, artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca,  "Core 1", artigosView, medidor.Elapsed);
                     }
                 break;
                 }
@@ -98,7 +98,7 @@ namespace Solr.Controllers
                         artigos = solrCore2.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("", "Core 2", artigosView.QuantidadeRelevantes, artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 2", artigosView, medidor.Elapsed);
                     }
                     else
                     {
@@ -108,7 +108,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog(busca, "Core 2", artigosView.QuantidadeRelevantes, artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core 2", artigosView, medidor.Elapsed);
                     }
                     break;
                 }
@@ -122,7 +122,7 @@ namespace Solr.Controllers
                         artigos = solrCore3.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("", "Core 3", artigosView.QuantidadeRelevantes, artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 3", artigosView, medidor.Elapsed);
                     }
                     else
                     {
@@ -132,7 +132,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog(busca, "Core 3", artigosView.QuantidadeRelevantes, artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core 3", artigosView, medidor.Elapsed);
                     }
                     break;
                 }
@@ -146,7 +146,7 @@ namespace Solr.Controllers
                         artigos = solrCore4.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("", "Core 4", artigosView.QuantidadeRelevantes, artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core 4", artigosView, medidor.Elapsed);
                         }
                     else
                     {
@@ -156,7 +156,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog(busca, "Core 4", artigosView.QuantidadeRelevantes, artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core 4", artigosView, medidor.Elapsed);
                     }
                     break;
                 }
@@ -170,7 +170,7 @@ namespace Solr.Controllers
                         artigos = solrCoreOriginal.Query(SolrQuery.All);
                         medidor.Stop();
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog("", "Core Original", artigosView.QuantidadeRelevantes, artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                        log.inserirLog("", "Core Original", artigosView, medidor.Elapsed);
                     }
                     else
                     {
@@ -180,7 +180,7 @@ namespace Solr.Controllers
                         medidor.Stop();
                         artigosView.QueryTime = medidor.Elapsed;
                         artigosView.Artigos = formatarLista(artigos);
-                        log.inserirLog(busca, "Core Original", artigosView.QuantidadeRelevantes, artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                        log.inserirLog(busca, "Core Original", artigosView, medidor.Elapsed);
                     }
                     break;
                 }
@@ -194,7 +194,7 @@ namespace Solr.Controllers
                             artigos = solrCoreSumarizado.Query(SolrQuery.All);
                             medidor.Stop();
                             artigosView.Artigos = formatarLista(artigos);
-                            log.inserirLog("", "Core_sum", artigosView.QuantidadeRelevantes, artigosView.Precision, artigosView.Recall, artigosView.MedidaF, medidor.Elapsed);
+                            log.inserirLog("", "Core_sum", artigosView, medidor.Elapsed);
                         }
                         else
                         {
@@ -204,7 +204,7 @@ namespace Solr.Controllers
                             medidor.Stop();
                             artigosView.QueryTime = medidor.Elapsed;
                             artigosView.Artigos = formatarLista(artigos);
-                            log.inserirLog(busca, "Core_sum", artigosView.QuantidadeRelevantes, artigosView.obterPrecisao(busca), artigosView.obterRecall(busca), artigosView.obterMedidaF(busca), medidor.Elapsed);
+                            log.inserirLog(busca, "Core_sum", artigosView, medidor.Elapsed);
                         }
                         break;
                     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Solr.Models;
+using System;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
@@ -48,7 +49,7 @@ namespace Solr
             conn = null;
         }
 
-        public void inserirLog(string pesquisa, string core, int quantidadeRelevante, string precision, string recall, string medidaF, TimeSpan tempoPesquisa)
+        public void inserirLog(string pesquisa, string core, ArtigoView artigoView, TimeSpan tempoPesquisa)
         {
             abrirConexao();
 
@@ -59,20 +60,26 @@ namespace Solr
             else
                 sql += "insert into [Plan2$] ";
 
-            sql += "([Pesquisa],[Quantidade_Relevantes], [Core], [Precision], [Recall], [Medida-F], [Tempo], [Hora]) ";
+            sql += "([Pesquisa],[Quantidade_Relevantes], [Core], [FormulaPrecision], [Precision], [FormulaRecall], [Recall], [Medida-F], [Tempo], [Hora]) ";
             sql += "values ";
-            sql += "(@pesquisa, @quantidadeRelevante, @core, @precision, @recall, @medidaF, @tempoPesquisa, @hora)";
-
+            sql += "(@pesquisa, @quantidadeRelevante, @core, @formulaPrecision, @precision, @formulaRecall, @recall, @medidaF, @tempoPesquisa, @hora)";
+            string precision = artigoView.obterPrecisao(pesquisa);
+            string recall = artigoView.obterRecall(pesquisa);
+            string medidaF = artigoView.obterMedidaF(pesquisa);
             cmd.CommandText = sql;
             cmd.Parameters.Add("@pesquisa", OleDbType.VarChar, 255).Value = pesquisa;
-            cmd.Parameters.Add("@quantidadeRelevante", OleDbType.Integer).Value = quantidadeRelevante;
+            cmd.Parameters.Add("@quantidadeRelevante", OleDbType.Integer).Value = artigoView.QuantidadeRelevantes;
             cmd.Parameters.Add("@core", OleDbType.VarChar, 255).Value = core;
+            cmd.Parameters.Add("@formulaPrecision", OleDbType.VarChar, 255).Value = artigoView.descricaoFormulaPrecision.ToString();
             cmd.Parameters.Add("@precision", OleDbType.VarChar, 255).Value = string.IsNullOrEmpty(precision) ? string.Empty : precision;
+            cmd.Parameters.Add("@formulaRecall", OleDbType.VarChar, 255).Value = artigoView.descricaoFormulaRecall.ToString();
             cmd.Parameters.Add("@recall", OleDbType.VarChar, 255).Value = string.IsNullOrEmpty(recall) ? string.Empty : recall;
             cmd.Parameters.Add("@medidaF", OleDbType.VarChar, 255).Value = string.IsNullOrEmpty(medidaF) ? string.Empty : medidaF;
             cmd.Parameters.Add("@tempoPesquisa", OleDbType.VarChar, 255).Value = tempoPesquisa.ToString();
             cmd.Parameters.Add("@hora", OleDbType.Date).Value = DateTime.Now;
 
+            
+            
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
 

@@ -52,7 +52,10 @@ namespace Solr.Models
         }
 
         public int QuantidadeRelevantes { get; set; }
-        
+
+        public string descricaoFormulaPrecision;
+        public string descricaoFormulaRecall;
+
         private string precision;
         public string Precision
         {
@@ -70,12 +73,16 @@ namespace Solr.Models
             Dictionary<string, int> itens = new Dictionary<string, int>();
             itens = extrairArtigosCorretos(termo);
             bool termoDefinido = Util.ehTermoDefinido(termo);
+
             foreach (KeyValuePair<string, int> item in itens)
             {
+                descricaoFormulaPrecision = item.Value.ToString() + "/" + Artigos.Count.ToString();
                 if (!termoDefinido)
                     precision += " " + item.Key + ": " + item.Value.ToString() + "/" + Artigos.Count.ToString() + " = " + ((double)item.Value / (double)Artigos.Count).ToString("0.000");
                 else
+                {
                     precision += " " + ((double)item.Value / (double)Artigos.Count).ToString("0.000");
+                }
             }
             return precision;
         }
@@ -99,10 +106,13 @@ namespace Solr.Models
             bool termoDefinido = Util.ehTermoDefinido(termo);
             foreach (KeyValuePair<string, int> item in itens)
             {
+                descricaoFormulaRecall = item.Value.ToString() + "/" + QuantidadeRelevantes;
                 if (!termoDefinido)
-                    recall += " " + item.Key + ": " + item.Value.ToString() + "/" + QuantidadeRelevantes + " = " + ((double)item.Value / (double)10).ToString("0.000");
+                    recall += " " + item.Key + ": " + item.Value.ToString() + "/" + QuantidadeRelevantes + " = " + ((double)item.Value / QuantidadeRelevantes).ToString("0.000");
                 else
+                {
                     recall += " " + ((double)item.Value / (double)QuantidadeRelevantes).ToString("0.000");
+                }
             }
             return recall;
         }
@@ -127,7 +137,7 @@ namespace Solr.Models
             foreach (KeyValuePair<string, int> item in itens)
             {
                 double p = (double)item.Value / (double)Artigos.Count;
-                double r = (double)item.Value / (double)10;
+                double r = (double)item.Value / QuantidadeRelevantes;
 
                 if (!termoDefinido)
                     medidaF += " " + item.Key + ": " + (2 * ((p * r) / (p + r))).ToString("0.000");
